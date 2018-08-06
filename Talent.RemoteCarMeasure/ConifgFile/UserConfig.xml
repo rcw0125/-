@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<User name="张亮" code="zl" loginName="admin" password="123456">
+  <Role code="s001" name="1#坐席" formUrl="Talent.RemoteCarMeasure.MainWindow"> </Role>
+</User>

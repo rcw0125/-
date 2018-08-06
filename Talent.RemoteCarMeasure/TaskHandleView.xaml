@@ -1,0 +1,821 @@
+﻿<pform:Only_WindowBase
+        x:Name="HandleTaskView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="Talent.RemoteCarMeasure.TaskHandleView"
+        Title="智能化远程集中计量管理系统 3.0" WindowStartupLocation="Manual" FontFamily="Microsoft YaHei" WindowStyle="None"
+        Background="Transparent" ResizeMode="NoResize" 
+        Icon="Image/SysImage/计量.ico" Height="820" Width="1100"
+        xmlns:VM="clr-namespace:Talent.RemoteCarMeasure.ViewModel"
+        xmlns:wfi ="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        xmlns:wf ="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" Topmost="False"
+        xmlns:myC="clr-namespace:Talent.ClientCommonLib.Controls;assembly=Talent.ClientCommonLib" 
+        xmlns:pform="clr-namespace:Talent.ClientCommonLib;assembly=Talent.ClientCommonLib"
+        xmlns:tk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        IsEnabled="{Binding IsViewEnable,Mode=OneWay}" IsEnabledChanged="Window_IsEnabledChanged" Loaded="Window_Loaded" Closing="HandleTaskView_Closing"
+    KeyDown="HandleTaskView_KeyDown">
+    <pform:Only_WindowBase.Resources>
+        <VM:TaskHandleViewModel x:Key="TaskHandleDataSource"/>
+        <Style x:Key="CheckBoxStyle1" TargetType="{x:Type CheckBox}">
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <BulletDecorator Background="Transparent" SnapsToDevicePixels="true">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="borderCheck">
+                                                <EasingColorKeyFrame KeyTime="0" Value="#FF77D179"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="borderCheck">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked"/>
+                                    <VisualState x:Name="Indeterminate"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <StackPanel Orientation="Horizontal">
+                                <Grid Width="40" Height="20">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2">
+                                        <Border x:Name="borderCheck" Width="16" Height="16" Background="LightGray" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="1,0" CornerRadius="1" RenderTransformOrigin="0.5,0.5">
+                                            <Border.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </Border.RenderTransform>
+                                        </Border>
+                                        <!--<Border x:Name="borderCheck" Width="16" Height="16" Background="#FF77D179" HorizontalAlignment="Left" VerticalAlignment="Center"/>-->
+                                    </Border>
+                                </Grid>
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </StackPanel>
+                        </BulletDecorator>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="HandleButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="#FFEE786C"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="borderHover">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="1">
+                                                    <EasingDoubleKeyFrame.EasingFunction>
+                                                        <CircleEase EasingMode="EaseIn"/>
+                                                    </EasingDoubleKeyFrame.EasingFunction>
+                                                </EasingDoubleKeyFrame>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border Background="{TemplateBinding Background}" CornerRadius="6"/>
+                            <Border x:Name="borderHover" Background="#FFff8983" CornerRadius="6" Opacity="0"/>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--<Style x:Key="WeightLabelStyle" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="#FFFF7B70"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Width" Value="90"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="Visibility" Value="Visible"/>
+        </Style>-->
+        <Style x:Key="WeightTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="#FF4D4D4D"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Background" Value="#FFEAEAEA"/>
+            <Setter Property="Width" Value="90"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <!--<Setter Property="IsReadOnly" Value="True"/>-->
+        </Style>
+        <Style x:Key="WeightLabelStyle2" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="#FF7C7C7C"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Width" Value="90"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Geometry x:Key="DownArrowGeometry">M 0 0 L 3.5 4 L 7 0 Z</Geometry>
+        <Style x:Key="ButtonStyleImageLeft" TargetType="{x:Type Button}">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imgHover">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imgHover">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Image x:Name="imgNormal" Source="Image/SysImage/arrowLeft_gray.png" Stretch="None"/>
+                            <Image x:Name="imgHover" Source="Image/SysImage/arrowLeft_red.png" Stretch="None" Visibility="Hidden"/>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyleImageRight" TargetType="{x:Type Button}">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imgHover">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imgHover">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Image x:Name="imgNormal" Source="Image/SysImage/arrowRight_gray.png" Stretch="None"/>
+                            <Image x:Name="imgHover" Source="Image/SysImage/arrowRight_red.png" Stretch="None" Visibility="Hidden"/>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="BigStopButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand"/>
+            <!--<Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="48"/>-->
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="#FFEE786C"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="borderHover">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="1">
+                                                    <EasingDoubleKeyFrame.EasingFunction>
+                                                        <CircleEase EasingMode="EaseIn"/>
+                                                    </EasingDoubleKeyFrame.EasingFunction>
+                                                </EasingDoubleKeyFrame>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border Background="{TemplateBinding Background}" CornerRadius="0,0,6,0"/>
+                            <Border x:Name="borderHover" Background="#FFff8983" CornerRadius="0,0,6,0" Opacity="0"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Path Data="M123.25,38.25 L132.5,28.083333 135.25,30.750246 125.66667,40.833248 135,50.41685 132.5,53.499784 122.5,44.166652 113.16667,53.499783 109.91628,50.583179 120.24958,40.916722 109.99929,31.000271 112.74936,28.166999 z" Fill="White"  Height="26.5" Margin="0,4,15,0" Stretch="Fill" Width="26.5"/>
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </StackPanel>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="BigOKButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand"/>
+            <!--<Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="48"/>-->
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="#FF87DC85"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="borderHover">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="1">
+                                                    <EasingDoubleKeyFrame.EasingFunction>
+                                                        <CircleEase EasingMode="EaseIn"/>
+                                                    </EasingDoubleKeyFrame.EasingFunction>
+                                                </EasingDoubleKeyFrame>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border Background="{TemplateBinding Background}" CornerRadius="0,0,0,6"/>
+                            <Border x:Name="borderHover" Background="#FF8BE689" CornerRadius="0,0,0,6" Opacity="0"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Path Data="M211.75,726.33333 L223.25,736.83365 242.66667,718.08341 245.66631,720.8338 223.0831,743.58402 208.25007,729.0007 211.08335,725.75062 z" Fill="White"  Height="26.5" Margin="0,4,15,0" Stretch="Fill" Width="38.417"/>
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </StackPanel>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ImageButtonStyle" TargetType="{x:Type myC:ImageButton}">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type myC:ImageButton}">
+                        <Border Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="borderHover">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="6*"/>
+                                    <RowDefinition Height="4*"/>
+                                </Grid.RowDefinitions>
+                                <!--<Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="16"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>-->
+                                <Border Grid.Column="0" Grid.ColumnSpan="2" x:Name="borderHover" Grid.RowSpan="2" Opacity="0" Background="#33FFFFFF"/>
+                                <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="2" Source="{TemplateBinding Image}" Margin="0,0,0,0"/>
+                                <ContentPresenter Grid.Column="1" Grid.Row="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </pform:Only_WindowBase.Resources>
+    <pform:Only_WindowBase.DataContext>
+        <Binding Source="{StaticResource TaskHandleDataSource}"/>
+    </pform:Only_WindowBase.DataContext>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2"/>
+            <ColumnDefinition Width="253"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" >
+            <Grid x:Name="gridOuter"   Grid.Row="0" >
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="1,0.4" StartPoint="0,0.6">
+                        <GradientStop Color="#FF528DAD"/>
+                        <GradientStop Color="#FF6DAEA6" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="495"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="25"/>
+                </Grid.ColumnDefinitions>
+                <Image VerticalAlignment="Center" Source="Image/SysImage/ChangeSkin.png" Stretch="Fill"   RenderTransformOrigin="-1.375,0.5"    HorizontalAlignment="Right" Height="28" Width="32" ToolTip="换肤" MouseLeftButtonDown="Image_MouseLeftButtonDown"   Grid.Row="0" Grid.Column="3" Margin="0,21,349,21"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Text="打开视频" FontSize="18" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="0,0,295,0"/>
+                <CheckBox x:Name="OpenVideoCheckBox" Grid.Row="0" Grid.Column="0" Checked="OpenVideoCheckBox_Checked" Unchecked="OpenVideoCheckBox_Unchecked" IsChecked="{Binding IsOpenVideo}" Grid.ColumnSpan="5" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,250,0" FontSize="14" Foreground="#FF000000" Style="{DynamicResource CheckBoxStyle1}"/>
+                <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Background="#FF3B4D57" Height="44" HorizontalAlignment="Right" Margin="0,0,50,0" CornerRadius="4">
+                    <TextBlock Text="{Binding VoiceMsg, Mode=OneWay}" FontSize="22" Foreground="#FF9CEE9A" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="30,0" TextAlignment="Center"/>
+                </Border>
+                <Button x:Name="btnClose" Grid.Column="0" Grid.ColumnSpan="5" Visibility="Visible"  ToolTip="关闭" VerticalAlignment="Top" Style="{StaticResource ExitButtonStyle}" HorizontalAlignment="Right" Width="40" Height="40" Margin="0,2,2,0" Click="btnClose_Click"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding TaskName, Mode=OneWay}" FontSize="25" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0,0,0"/>
+                <TextBlock x:Name="rollMsg" Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="3" Text="{Binding RollMsg, Mode=OneWay}" FontWeight="Bold" FontSize="48" Foreground="#FFFF5447" RenderTransformOrigin="0,0.5" SizeChanged="rollMsg_SizeChanged">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="136"/>
+                        <RowDefinition Height="186"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="70"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" Margin="0,0,0,25" Background="#FF463B39" CornerRadius="6">
+                        <Grid>
+                            <Ellipse x:Name="LeftEllipse" VerticalAlignment="Top" HorizontalAlignment="Left" Height="24" Width="24" Fill="{Binding Light}" Opacity="0.7" Margin="28,12,0,0"/>
+                            <Ellipse x:Name="RightEllipse" VerticalAlignment="Top" HorizontalAlignment="Left" Height="24" Width="24" Fill="{Binding Light}" Opacity="0.7" Margin="322,12,0,0"/>
+                            <Label Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18" Foreground="White" Margin="165,10,0,0" FontWeight="Bold" Content="{Binding CurWeighterText, Mode=OneWay}"/>
+                            <Label Grid.Row="1" x:Name="WeighterLabel" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="50" Foreground="White" FontWeight="Bold" Margin="102,30,0,0" Content="{Binding CurWeight, Mode=OneWay}"/>
+                            <Border HorizontalAlignment="Right" Background="White" CornerRadius="0,4,4,0" Width="120">
+                                <Grid>
+                                    <RadioButton Content="皮重" VerticalAlignment="Top" Margin="0,11,0,0" VerticalContentAlignment="Center" Style="{DynamicResource RadioButtonStyle1}" IsChecked="{Binding IsTareWeight, Mode=TwoWay}"/>
+                                    <RadioButton Content="毛重" VerticalAlignment="Top" Margin="15,62,15,0" VerticalContentAlignment="Center" Style="{DynamicResource RadioButtonStyle1}" IsChecked="{Binding IsGrossWeight, Mode=TwoWay}"/>
+                                </Grid>
+                            </Border>
+                            <Line VerticalAlignment="Center" X1="40" Y1="40" X2="40" Y2="110" StrokeThickness="2" StrokeDashArray="4, 3">
+                                <Line.Stroke>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFEE9084" Offset="0"/>
+                                        <GradientStop Color="#FFEE9084" Offset="1"/>
+                                        <GradientStop Color="#FF3B4D57" Offset="0.5"/>
+                                    </LinearGradientBrush>
+                                </Line.Stroke>
+                            </Line>
+                            <Line VerticalAlignment="Center" X1="335" Y1="40" X2="335" Y2="110" StrokeThickness="2" StrokeDashArray="4, 3">
+                                <Line.Stroke>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFEE9084" Offset="0"/>
+                                        <GradientStop Color="#FFEE9084" Offset="1"/>
+                                        <GradientStop Color="#FF3B4D57" Offset="0.5"/>
+                                    </LinearGradientBrush>
+                                </Line.Stroke>
+                            </Line>
+                            <Grid VerticalAlignment="Center" x:Name="LeftLineX" HorizontalAlignment="Left" Margin="31,31,0,0" Visibility="{Binding LeftLine, Mode=OneWay}">
+                                <Border Width="16" Height="2" Background="#FFFEED93" RenderTransformOrigin="0.5,0.5">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="45"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+                                <Border Width="16" Height="2" Background="#FFFEED93" RenderTransformOrigin="0.5,0.5">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="-45"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+                            </Grid>
+                            <Grid VerticalAlignment="Center" x:Name="RightLineX" HorizontalAlignment="Left" Margin="326,31,0,0" Visibility="{Binding RightLine, Mode=OneWay}">
+                                <Border Width="16" Height="2" Background="#FFFEED93" RenderTransformOrigin="0.5,0.5">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="45"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+                                <Border Width="16" Height="2" Background="#FFFEED93" RenderTransformOrigin="0.5,0.5">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="-45"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+                            </Grid>
+                            <!--<TextBlock x:Name="TempTextBlock" IsEnabled="{Binding IsShowWeighterEnable, Mode=TwoWay, Source={StaticResource TaskHandleDataSource}}" Visibility="Collapsed" IsEnabledChanged="TempTextBlock_IsEnabledChanged"/>-->
+                        </Grid>
+                    </Border>
+                    <Border Background="White" CornerRadius="6,6,0,0" Margin="1,116,-1,51" Grid.RowSpan="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="45"/>
+                                <RowDefinition Height="10"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Name="gridSupplier" Margin="-4,24,4,25" Grid.RowSpan="2" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="19*"/>
+                                    <ColumnDefinition Width="401*"/>
+                                    <ColumnDefinition Width="27*"/>
+                                    <ColumnDefinition Width="48*"/>
+                                </Grid.ColumnDefinitions>
+                                <!--<Label Grid.Row="0" Content="{Binding ShowGrossb, Mode=TwoWay}" Style="{DynamicResource WeightLabelStyle}" RenderTransformOrigin="0.722,0.2" Margin="32,-1,0,1" />
+                                <Label Grid.Row="0" Content="{Binding ShowTareb, Mode=TwoWay}" Style="{DynamicResource WeightLabelStyle}" Margin="151,-3,0,3"  />
+                                <Label Grid.Row="0" Content="{Binding ShowSuttleb, Mode=TwoWay}" Style="{DynamicResource WeightLabelStyle}" Margin="390,-1,0,1" Grid.ColumnSpan="2"  />-->
+                                <TextBox x:Name="txtGrossb"  Grid.Row="0" Text ="{Binding ShowGrossb, Mode=OneWay}" IsReadOnly="False" Style="{DynamicResource WeightTextBoxStyle}" RenderTransformOrigin="0.722,0.2" Margin="13,4,0,7" TextChanged="TextBox_TextChanged" Grid.Column="1"  />
+                                <TextBox x:Name="txtTareb" Grid.Row="0" Text="{Binding ShowTareb, Mode=OneWay}" IsReadOnly="False" Style="{DynamicResource WeightTextBoxStyle}" Margin="132,2,0,9" TextChanged="TextBox_TextChanged_1" Grid.Column="1"  />
+                                <TextBox x:Name="txtSuttleb" Grid.Row="0" Text="{Binding ShowSuttleb, Mode=OneWay}" IsReadOnly="True"  Style="{DynamicResource WeightTextBoxStyle}" Margin="371,4,0,7" Grid.ColumnSpan="3" Grid.Column="1"  />
+                            </Grid>
+                            <Grid Grid.Row="1" Name="gridMeasureWeight" Margin="5,24,-5,21" Grid.RowSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="43*"/>
+                                    <RowDefinition Height="7*"/>
+                                </Grid.RowDefinitions>
+                                <Border Background="#FFFF7B70" Width="20" Height="5" Margin="119,22,0,15" HorizontalAlignment="Left"/>
+                                <Border x:Name="minusdeduction" Background="#FFFF7B70" Width="20" Height="5" Margin="238,22,0,15" HorizontalAlignment="Left"/>
+                                <Border Background="#FFFF7B70" Width="20" Height="5" Margin="357,18,0,19" HorizontalAlignment="Left"/>
+                                <Border Background="#FFFF7B70" Width="20" Height="5" Margin="357,26,0,11" HorizontalAlignment="Left"/>
+                                <TextBox Text="{Binding ShowGross, Mode=TwoWay}" Style="{DynamicResource WeightTextBoxStyle}" IsReadOnly="true" Margin="25,5,0,5" Grid.RowSpan="2"/>
+                                <TextBox Text="{Binding ShowTare, Mode=TwoWay}" Style="{DynamicResource WeightTextBoxStyle}" IsReadOnly="true" Margin="144,5,0,5" Grid.RowSpan="2"/>
+                                <TextBox x:Name="txtdeduction" Text="{Binding ShowDedution, Mode=TwoWay}" Style="{DynamicResource WeightTextBoxStyle}" IsReadOnly="{Binding DecutionIsReadOnly,Mode=TwoWay}" Margin="262,5,0,5" Grid.RowSpan="2" TextChanged="txtdeduction_TextChanged"/>
+                                <TextBox Text="{Binding ShowSuttle, Mode=TwoWay}" Style="{DynamicResource WeightTextBoxStyle}" IsReadOnly="true" Margin="382,5,0,5" Grid.RowSpan="2"/>
+                            </Grid>
+                            <Grid Grid.Row="2" Name="gridMeasure">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="21*"/>
+                                    <ColumnDefinition Width="110*"/>
+                                    <ColumnDefinition Width="57*"/>
+                                    <ColumnDefinition Width="307*"/>
+                                </Grid.ColumnDefinitions>
+                                <!---->
+                                <Label Content="毛重" Style="{DynamicResource WeightLabelStyle2}" Margin="4,18,0,-7" Grid.Column="1"/>
+                                <Label Content="{Binding HandleTask.BullInfo.operaname, Mode=OneWay}" Style="{DynamicResource WeightLabelStyle2}" Foreground="Black" Margin="-2,-106,0,118" Grid.ColumnSpan="2" Height="33" Width="129"/>
+                                 <CheckBox x:Name="OpenAutoTareCheckBox" Grid.Row="0" Grid.Column="3" Content=" 回 皮"  Visibility="{Binding AutoTareIsShow, Mode=TwoWay}" IsChecked="{Binding AutoTareIsCheck, Mode=TwoWay}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,-99,25,124" FontSize="14" Foreground="#FF000000" Style="{DynamicResource CheckBoxStyle1}"/>
+                                <Label Content="皮重" Style="{DynamicResource WeightLabelStyle2}" Margin="13,18,0,-7" Grid.Column="2" Grid.ColumnSpan="2"/>
+                                <Label Name="lbldeduction" Content="扣重" Style="{DynamicResource WeightLabelStyle2}" Margin="74,18,0,-7" Grid.Column="3"/>
+                                <Label Content="净重" Style="{DynamicResource WeightLabelStyle2}" Margin="194,18,0,-7" Grid.Column="3"/>
+                            </Grid>
+                            <myC:ImageButton Grid.Row="3" Margin="0,-25,10,0" ToolTip="重选业务信息" Command="{Binding ReChooseBusinessCommand}" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Right" Image="Image/SysImage/more_menu.png"/>
+                            <Button Grid.Row="2" FontSize="15"  FontWeight="Bold" Margin="0,22,241,3" Content="{Binding LastTare, Mode=TwoWay}" ToolTip="历史皮重" Command="{Binding ShowHistoryTareCommand}"  HorizontalAlignment="Right"  RenderTransformOrigin="-0.325,0.542" Grid.RowSpan="2" />
+
+                        </Grid>
+                    </Border>
+                    <Border Grid.Row="1" Background="{Binding BColor0,Mode=TwoWay}"  BorderBrush="#FFECECEC" BorderThickness="0,1,0,0" Margin="0,140,0,0" Grid.RowSpan="2">
+                        <Grid x:Name="rendergv">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Text="业务" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold"  Foreground="#FF7C7C7C"/>
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="件数" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding HandleTask.BullInfo.operatype, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
+                            <TextBox Grid.Row="0" Grid.Column="3" x:Name="snumberTextBox" Text="{Binding HandleTask.BullInfo.snumber, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
+                            <TextBlock Grid.Row="1" Text="车号" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="业务号" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
+                            <!--<ComboBox Grid.Row="1" Width="160" Height="32" HorizontalAlignment="Left" Margin="60,0,0,0" Style="{DynamicResource ComboBoxStyle1}" ItemsSource="{Binding CarNumbers,Mode=TwoWay}" SelectedItem="{Binding SelectedCarNumber,Mode=TwoWay}" DisplayMemberPath="Name" />-->
+                                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding HandleTask.BullInfo.carno, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
+                                <TextBox Grid.Row="1" Grid.Column="3" Name="TaskCodeTxt"  Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"   KeyUp="TaskCodeTxt_KeyUp"/>
+                                <Popup x:Name="DropDataViewPop" MouseLeave="Pop_Child_MouseLeave" PopupAnimation="Scroll"
+                                      PlacementTarget="{Binding ElementName=TaskCodeTxt}" 
+                               Placement="Bottom"
+               Width="700" Height="300" IsOpen="False" Grid.Column="1" Margin="198,0,200,0" Grid.ColumnSpan="2">
+                                    <DataGrid x:Name="PopDataGrid" VirtualizingStackPanel.IsVirtualizing="True" 
+                          VirtualizingStackPanel.VirtualizationMode="Recycling"
+                          EnableRowVirtualization="True" 
+                          SelectedItem="{Binding SelectedTaskCode}" AutoGenerateColumns="False" SelectionChanged="PopDataGrid_SelectionChanged"
+                          >
+                                        <DataGrid.ColumnHeaderStyle>
+                                            <Style TargetType="DataGridColumnHeader">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center">
+                                                </Setter>
+                                            </Style>
+                                        </DataGrid.ColumnHeaderStyle>
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="业务号" IsReadOnly="True" Width="120" Binding="{Binding taskcode}"/>
+                                            <DataGridTextColumn Header="来源" IsReadOnly="True" Width="120" Binding="{Binding sourcename}"/>
+                                            <!--<DataGridTextColumn Header="来源编号" IsReadOnly="True" Width="120" Binding="{Binding sourcecode}"/>-->
+                                            <DataGridTextColumn Header="去向" IsReadOnly="True" Width="120" Binding="{Binding targetname}"/>
+                                            <!--<DataGridTextColumn Header="目的地编号" IsReadOnly="True" Width="120" Binding="{Binding targetcode}"/>-->
+                                            <DataGridTextColumn Header="物料名称" IsReadOnly="True" Width="120" Binding="{Binding materialname}"/>
+                                            <!--<DataGridTextColumn Header="物料编号" IsReadOnly="True" Width="120" Binding="{Binding materialcode}"/>-->
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </Popup>
+                                <!--Text="{Binding HandleTask.BullInfo.planid, Mode=TwoWay}"-->
+                                <TextBlock Grid.Row="2" Text="货名" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
+                                <TextBlock Grid.Row="2" Grid.Column="2" Text="规格" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" x:Name="materialnameTextBox" Text="{Binding HandleTask.BullInfo.materialname, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
+                                <TextBox Grid.Row="2" Grid.Column="3" x:Name="materialspecTextBox" Text="{Binding HandleTask.BullInfo.materialspec, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
+                                <TextBlock Grid.Row="3" x:Name="ghTextBlock" Text="供货" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" x:Name="sourcenameTextBox" Text="{Binding HandleTask.BullInfo.sourcename, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
+                                <TextBlock Grid.Row="4" Text="收货" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
+                                <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" x:Name="targetTextBox" Text="{Binding HandleTask.BullInfo.targetname, Mode=TwoWay}" Foreground="#FF333333" FontSize="16" Margin="5,10,10,10" />
+                                <TextBlock Grid.Row="5"  Text="备注" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
+                                <TextBox x:Name="memoTextBox" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding HandleTask.BullInfo.memo, Mode=TwoWay}" Grid.Row="5" FontSize="16" Margin="5,10,10,10" Foreground="#FF7C7C7C"/>
+                            </Grid>
+                    </Border>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="1" x:Name="ConfirmButton" Style="{DynamicResource BigOKButtonStyle}" Content="确 定" ToolTip="提交计量任务" Command="{Binding ConfirmWeightCommand}" Margin="1,-1,-2,1"/>
+                        <!--<Button Grid.Column="1" x:Name="ConfirmButton" Style="{DynamicResource BigOKButtonStyle}" Content="确 定" ToolTip="提交计量任务" Command="{Binding ConfirmWeightCommand}" IsEnabled="{Binding IsConfirmUse, Mode=TwoWay}" Margin="1,-1,-2,1"/>-->
+                        <Button Style="{DynamicResource BigStopButtonStyle}" Content="终 止" ToolTip="终止计量" Command="{Binding StopMeasureCommand}" Margin="-1,1,2,-1" />
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="3" Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="146"/>
+                        <RowDefinition Height="210"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="1" Background="White" CornerRadius="0,0,6,6">
+                        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="6,11">
+                            <ItemsControl x:Name="items1">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Border>
+                    <Grid Grid.Row="0" Margin="-3,0">
+                        <WindowsFormsHost x:Name="formHostBig" Margin="10,2,10,10" Opacity="0.1" OpacityMask="Black" Grid.ColumnSpan="4" Grid.Row="1">
+                            <wf:PictureBox x:Name="videoBig"/>
+                        </WindowsFormsHost>
+                    </Grid>
+                    <Border Grid.Row="2" Margin="0,16,0,0" Background="White" CornerRadius="4">
+                        <Grid>
+                            <ScrollViewer x:Name="scrollView" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Margin="20,10">
+                                <ItemsControl x:Name="ImagesControl" ItemsSource="{Binding Pictures,Mode=TwoWay}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Image Width="130" Height="130" Stretch="Uniform" Source="{Binding FtpPhoto,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0">
+                                                <Image.ToolTip>
+                                                    <Image Source="{Binding FtpPhoto}" MaxWidth="500px"/>
+                                                </Image.ToolTip>
+                                            </Image>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                            <Button x:Name="btnImgLeft" Click="btnImgLeft_Click" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource ButtonStyleImageLeft}"/>
+                            <Button x:Name="btnImgRight" Click="btnImgRight_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{DynamicResource ButtonStyleImageRight}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Border x:Name="borderRoot" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5" Cursor="Hand"
+                                Background="#33000000" Width="22" Height="110" VerticalAlignment="Top" 
+                                HorizontalAlignment="Right" Margin="0,200,0,0" CornerRadius="6,0,0,6" MouseEnter="borderRoot_MouseEnter">
+                    <Grid>
+                        <Border Background="#FFe5e5e5" Width="12" Height="2" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="60"/>
+                                    <TranslateTransform Y="4"/>
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                        </Border>
+                        <Border Background="#FFe5e5e5" Width="12" Height="2" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-60"/>
+                                    <TranslateTransform Y="-4"/>
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                        </Border>
+                    </Grid>
+                </Border>
+                <Popup x:Name="Pop_Parent" PopupAnimation="Fade" PlacementTarget="{Binding ElementName=borderRoot}" 
+                               Placement="Center" AllowsTransparency="True" StaysOpen="False" IsOpen="False" HorizontalOffset="-40" Margin="0,200">
+                    <Grid x:Name="gridMenu" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5" Margin="0,0,0,0" HorizontalAlignment="Right">
+                        <Border Background="#CC000000" CornerRadius="6,0,0,6" Margin="0,20,0,40">
+                            <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" VerticalAlignment="Center" >
+                                <ItemsControl x:Name="itemsControlMenu">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Vertical" Margin="0,10"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <myC:ImageButton x:Name="btnPop1" MouseEnter="btnPop1_MouseEnter" Content="语音提示" Image="Image/SysImage/voice.png" Style="{DynamicResource ImageButtonHasChildrenStyle}"/>
+
+                                    <Border Height="1" Background="#33FFFFFF"/>
+
+                                    <!--<Border Height="1" Background="#33FFFFFF"/>
+
+                                            <myC:ImageButton MouseEnter="btnPop_MouseEnter" Content="暂停计量" Image="Image/SysImage/pauseweight.png"/>-->
+                                    <!--<myC:ImageButton x:Name="btnPop2" MouseEnter="btnPop2_MouseEnter" Content="打开对话" Image="Image/SysImage/dialogue.png" Style="{DynamicResource ImageButtonHasChildrenStyle}"/>-->
+                                    <myC:ImageButton x:Name="btnPop2" MouseEnter="btnPop2_MouseEnter" Content="{Binding VoiceTalkButtonCotent, Mode=TwoWay}" Image="Image/SysImage/dialogue.png" Command="{Binding OpenTalkVoice}"/>
+
+                                    <Border Height="1" Background="#33FFFFFF"/>
+
+                                    <myC:ImageButton MouseEnter="btnPop_MouseEnter" Content="读取数据" Image="Image/SysImage/readdata.png" Command="{Binding ReadDataCommand}"/>
+
+                                    <Border Height="1" Background="#33FFFFFF"/>
+
+                                    <myC:ImageButton   Content="文字提示" Image="Image/SysImage/readdata.png" Command="{Binding SendMSGCommand}"/>
+
+                                    <!--<Border Height="1" Background="#33FFFFFF"/>
+
+                                            <myC:ImageButton MouseEnter="btnPop_MouseEnter" Content="录像回放" Image="Image/SysImage/playback.png"/>-->
+
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
+                        <Popup x:Name="Pop_Child1" MouseLeave="Pop_Child_MouseLeave" PopupAnimation="Scroll" Width="300" PlacementTarget="{Binding ElementName=btnPop1}" Placement="Left" AllowsTransparency="True" StaysOpen="False" IsOpen="False">
+                            <Border Background="White">
+                                <!--语音提示内容-->
+                                <ItemsControl x:Name="voiceControls" ItemsSource="{Binding VoiceCollections, Mode=TwoWay}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel Orientation="Horizontal" Background="#FF528DAD"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Button Content="{Binding Name, Mode=OneWay}" Command="{Binding VoiceCommand, Source={StaticResource TaskHandleDataSource}}" 
+                                                            CommandParameter="{Binding}" Background="#FF528DAD" Margin="10,2,10,0" Foreground="White" Width="124" Height="30" FontSize="15" Cursor="Hand" 
+                                                            ToolTip="{Binding Content, Mode=OneWay}" Style="{DynamicResource HandleButtonStyle}"/>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Border>
+                        </Popup>
+
+                        <Popup x:Name="Pop_Child2" MouseLeave="Pop_Child_MouseLeave" PopupAnimation="Scroll" Width="120" PlacementTarget="{Binding ElementName=btnPop2}" Placement="Left" AllowsTransparency="True" StaysOpen="False" IsOpen="False">
+                            <Border Background="White">
+                                <StackPanel Margin="0,10">
+                                    <Button Content="语音提示" Style="{DynamicResource PopupButtonStyle}"/>
+                                    <Button Content="打开对话" Style="{DynamicResource PopupButtonStyle}"/>
+                                    <Button Content="读取数据" Style="{DynamicResource PopupButtonStyle}"/>
+                                    <Button Content="视频回放" Style="{DynamicResource PopupButtonStyle}"/>
+                                </StackPanel>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </Popup>
+                <Grid x:Name="gridCountdown" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Height="120" Width="120" VerticalAlignment="Center" HorizontalAlignment="Center" IsVisibleChanged="gridCountdown_IsVisibleChanged" Visibility="{Binding TimeCountVisibility, Mode=TwoWay}"/>
+
+            </Grid>
+            <TextBlock x:Name="txtCountdown" Text="{Binding countdown, Mode=TwoWay }" Visibility="Hidden" Grid.ColumnSpan="3"  />
+            <!--<Popup x:Name="DropDataViewPop" MouseLeave="Pop_Child_MouseLeave" PopupAnimation="Scroll"
+               Width="700" Height="300" IsOpen="False" Grid.Column="1" Margin="198,0,200,0" Grid.ColumnSpan="2">
+                <DataGrid x:Name="PopDataGrid" VirtualizingStackPanel.IsVirtualizing="True" 
+                          VirtualizingStackPanel.VirtualizationMode="Recycling"
+                          EnableRowVirtualization="True"
+                          SelectedItem="{Binding SelectedTaskCode}" AutoGenerateColumns="False" SelectionChanged="PopDataGrid_SelectionChanged" 
+                          >
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center">
+                            </Setter>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="业务号" IsReadOnly="True" Width="120" Binding="{Binding taskcode}"/>
+                        <DataGridTextColumn Header="来源" IsReadOnly="True" Width="120" Binding="{Binding sourcename}"/>
+                        <DataGridTextColumn Header="去向" IsReadOnly="True" Width="120" Binding="{Binding targetname}"/>
+                        <DataGridTextColumn Header="物料名称" IsReadOnly="True" Width="120" Binding="{Binding materialname}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Popup>-->
+            <Popup x:Name="DropDownPop" PopupAnimation="Scroll" AllowsTransparency="True" StaysOpen="False" IsOpen="False" Grid.ColumnSpan="3">
+                <Border Background="#FFF0F0F0" CornerRadius="0" Margin="0" BorderBrush="Gray" BorderThickness="1">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" VerticalAlignment="Center" >
+                        <ItemsControl x:Name="dgTest">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource PopupButtonStyle}" Content="{Binding item}" Click="SelectBasicInfo_Click"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Border>
+            </Popup>
+        </Grid>
+    </Grid>
+</pform:Only_WindowBase>

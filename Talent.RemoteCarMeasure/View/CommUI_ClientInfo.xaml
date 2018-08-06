@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Talent.RemoteCarMeasure.CommUI_ClientInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="400">
+    <Border BorderThickness="1" BorderBrush="Khaki">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+            <!--Source="/Talent.RemoteCarMeasure;component/Image/SysImage/+1.png"-->
+            <Image Grid.Row="0" Source="{Binding GreenIconSource,Mode=TwoWay}" HorizontalAlignment="Left" Margin="30,10,0,0"/>
+            <Label x:Name="clientName" Foreground="White" Content="{Binding ClientName, Mode=TwoWay}" Width="120" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></Label>
+            <Image x:Name="redLightImage" Source="{Binding RedIconSource,Mode=TwoWay}" HorizontalAlignment="Right" Margin="0,10,30,0" />
+            <Label x:Name="weightLabel" Grid.Row="1" Foreground="White" Content="{Binding Weight, Mode=TwoWay}" FontSize="38" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></Label>
+            <Label x:Name="StateInfoLabel" Grid.Row="2" Foreground="White" Content="{Binding StateInfo, Mode=TwoWay}" HorizontalAlignment="Left" Margin="30,0,0,10" HorizontalContentAlignment="Left"  Width="100"></Label>
+    </Grid>
+    </Border>
+</UserControl>

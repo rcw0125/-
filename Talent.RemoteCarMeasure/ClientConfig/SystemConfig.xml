@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configlist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" EQUCODE="001" equname="1号坐席">
+  <module name="系统设置" code="SystemConfigs">
+    <submodule name="系统设置" type="普通" code="SystemConfig">
+      <param name="UnitName" lab="单位名称" type="String" size="20" value="山东天利和软件股份有限公司" />
+      <param name="SysName" lab="系统名称" type="String" size="30" value="邢台钢铁远程集中计量管理系统" />
+      <param name="SeatUrl" lab="任务服务器IP" type="String" size="30" value="http://192.168.2.42"/>
+      <param name="SeatPort" lab="任务服务器端口" type="Int" size="30" value="9001"/>
+      <param name="SeatId" lab="坐席ID" type="String" size="30" value="911">
+      </param>
+      <param name="SeatName" lab="坐席名称" type="String" size="30" value="911号汽车衡坐席">
+      </param>
+      <param name="MeasureType" lab="计量方式" type="字符" size="20" value="手动计量">
+        <list>自动计量</list>
+        <list>手动计量</list>
+      </param>
+      <param name="ConfirmTime" lab="自动确认时间(S)" type="int" size="6" value="6" />
+      <param name="WaitPrintResultTime" lab="等待打印结果时间(S)" type="int" size="6" value="3" />
+      <param name="WaitTaskResultTime" lab="等待任务时间(S)" type="int" size="6" value="1" />
+      <param name="WaitTaskResultCount" lab="等待任务可执行次数" type="int" size="6" value="5" />
+      <param name="WeightTimePeriod" lab="取数周期(S)" type="int" size="6" value="6" />
+      <param name="WeightTimeCount" lab="取数次数" type="int" size="6" value="3" />
+      <param name="ReLoginCheckCount" lab="检测坐席是否需要重新登录任务服务器的计时器时间间隔" type="int" size="6" value="10" />
+    </submodule>
+    <submodule name="Ftp文件设置" type="FtpConfig" code="FtpConfig">
+      <param name="LogSavePath" lab="日志保存路径" type="String" size="0" value="C:\Users\qh\Desktop\ftp相关\Log">
+      </param>
+      <!--<param name="PictureSavePath" lab="抓图保存路径" type="String" size="0" value="">
+      </param>-->
+      <param name="FtpIp" lab="FTP地址" type="String" size="0" value="180.150.184.100">
+      </param>
+      <param name="FtpPort" lab="FTP端口" type="int" size="0" value="21">
+      </param>
+      <param name="FtpUserName" lab="FTP用户名" type="String" size="0" value="admin">
+      </param>
+      <param name="FtpPassWord" lab="FTP密码" type="int" size="0" value="123456">
+      </param>
+      <param name="FtpUpdateDir" lab="FTP更新目录" type="string" size="0" value="180.150.184.100/TMGL">
+      </param>
+    </submodule>
+    <submodule name="计量提示音" type="普通" code="VoiceConfig">
+      <param name="Voice18" lab="进行对话" type="String" size="0" value="请拿听筒进行对话。"> </param>
+      <param name="Voice17" lab="放自带票" type="String" size="0" value="请放自带票!"> </param>
+      <param name="Voice36" lab="指定位停车插卡" type="String" size="0" value="车辆停到指定停车位后，再插磁卡!"> </param>
+      <param name="Voice2" lab="取IC卡" type="String" size="0" value="请取出IC卡。"> </param>
+      <param name="Voice3" lab="放IC卡申请单" type="String" size="0" value="请插入IC卡、放计量申请单。"> </param>
+      <param name="Voice4" lab="取IC卡申请单" type="String" size="0" value="请取出IC卡、计量申请单。"> </param>
+      <param name="Voice5" lab="开始计毛" type="String" size="0" value="开始计量毛重。"> </param>
+      <param name="Voice6" lab="开始计皮" type="String" size="0" value="开始计量皮重。"> </param>
+      <param name="Voice7" lab="放申请单" type="String" size="0" value="请放计量申请单。"> </param>
+      <param name="Voice8" lab="取申请单" type="String" size="0" value="请取计量申请单。"> </param>
+      <param name="Voice9" lab="求助已发" type="String" size="0" value="求助信息已发送，请等待计量。"> </param>
+      <param name="Voice10" lab="正计量" type="String" size="0" value="计量员正在计量，请等待。"> </param>
+      <param name="Voice11" lab="确认计量" type="String" size="0" value="请点击确认按钮，确认业务信息和重量。"> </param>
+      <param name="Voice12" lab="取计量单" type="String" size="0" value="请取计量单据。"> </param>
+      <param name="Voice13" lab="计量完成退卡下称" type="String" size="0" value="计量已完成，请取IC卡，车下秤。"> </param>
+      <param name="Voice14" lab="计量完成取单据" type="String" size="0" value="计量已完成，请取计量单据和IC卡，车下秤。"> </param>
+      <param name="Voice15" lab="计量完成无法打印" type="String" size="0" value="计量已完成，系统无法打印，请取IC卡，车下秤。"> </param>
+      <param name="Voice16" lab="计量完成回收单据" type="String" size="0" value="计量已完成，请取计量单据和IC卡，将计量申请单放入回收口，车下秤。"> </param>
+      <param name="Voice19" lab="先收货" type="String" size="0" value="请先收货确认后，再进行计量。"> </param>
+      <param name="Voice20" lab="先发货" type="String" size="0" value="请先发货确认后，再进行计量。"> </param>
+      <param name="Voice21" lab="皮重过期" type="String" size="0" value="您的皮重已经过期，请下一车计量皮重。"> </param>
+      <param name="Voice22" lab="先计皮重" type="String" size="0" value="请先计量皮重，再计量毛重。"> </param>
+      <param name="Voice23" lab="先计毛重" type="String" size="0" value="请先计量毛重，再计量皮重。"> </param>
+      <param name="Voice24" lab="皮重超范围" type="String" size="0" value="您的皮重超差太大，请等待计量员进行计量。"> </param>
+      <param name="Voice25" lab="进厂超时" type="String" size="0" value="您的车辆进厂超过规定时间，请重新进行进厂确认。"> </param>
+      <param name="Voice26" lab="皮重超差" type="String" size="0" value="皮重超差太大，不予计量，车下秤。"> </param>
+      <param name="Voice27" lab="超发货量" type="String" size="0" value="超过发货量，请卸货。"> </param>
+      <param name="Voice28" lab="车下秤" type="String" size="0" value="请车下秤。"> </param>
+      <param name="Voice29" lab="车上秤" type="String" size="0" value="请车上秤。"> </param>
+      <param name="Voice30" lab="车压秤" type="String" size="0" value="车压秤，请正确停放车辆。"> </param>
+      <param name="Voice31" lab="重新插卡" type="String" size="0" value="请取出IC卡。。。。请插入IC卡。"> </param>
+      <param name="Voice32" lab="重新上秤" type="String" size="0" value="请车下秤后，重新上秤。"> </param>
+      <param name="Voice33" lab="计量完成下称" type="String" size="0" value="计量已完成，车下秤。"> </param>
+      <param name="Voice34" lab="计量完成" type="String" size="0" value="计量已完成，请取计量单据，将计量申请单放入回收口，车下秤。"> </param>
+      <param name="Voice35" lab="计量完成无法打印" type="String" size="0" value="	计量已完成，系统无法打印，将计量申请单放入回收口，车下秤。"> </param>
+    </submodule>
+  </module>
+</configlist>

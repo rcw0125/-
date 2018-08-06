@@ -1,0 +1,52 @@
+﻿<Window x:Class="Talent.RemoteCarMeasure.View.SelectedTaskBusinessView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="选择任务的业务信息" Height="300" Width="700" Loaded="Window_Loaded"
+        Background="#FF6DAEA6" WindowStartupLocation="CenterScreen" FontFamily="Microsoft YaHei" WindowStyle="None"
+        AllowsTransparency="True" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <!--<Button x:Name="btnClose" Grid.Column="2" Visibility="Visible"  ToolTip="关闭" VerticalAlignment="Top" Style="{StaticResource ExitButtonStyle}" HorizontalAlignment="Right" Width="40" Height="40" Margin="0,1,1,0" Click="btnClose_Click"/>-->
+        <GroupBox Name="groupBox" Header="业务信息列表" FontSize="18" Grid.Row="0" Margin="10,10,10,0" Foreground="White">
+            <DataGrid x:Name="DataGrid" Margin="5" Foreground="White" CanUserAddRows="False" HorizontalScrollBarVisibility="Visible" AutoGenerateColumns="False" CanUserSortColumns="False" IsReadOnly="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="20"/>
+                    <DataGridTextColumn Binding="{Binding carno,Mode=TwoWay}" Header="车号" MinWidth="60"/>
+                    <DataGridTextColumn Binding="{Binding taskcode,Mode=TwoWay}" Header="业务号" MinWidth="60"/>
+                    <DataGridTextColumn Binding="{Binding planid,Mode=TwoWay}" Header="计划号" MinWidth="60"/>
+                    <DataGridTextColumn Binding="{Binding matchid,Mode=TwoWay}" Header="过磅单号" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding icid,Mode=TwoWay}" Header="IC卡" MinWidth="60"/>
+                    <DataGridTextColumn Binding="{Binding rfidid,Mode=TwoWay}" Header="RFID卡卡号" MinWidth="90"/>
+                    <DataGridTextColumn Binding="{Binding materialname,Mode=TwoWay}" Header="物料名称" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding materialspec,Mode=TwoWay}" Header="物料规格" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding suttleapp,Mode=TwoWay}" Header="计划重量" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding matchidb,Mode=TwoWay}" Header="发货单号" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding grossb,Mode=TwoWay}" Header="发货重量" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding tareb,Mode=TwoWay}" Header="供方皮重" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding suttleb,Mode=TwoWay}" Header="供方净重" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding taretime,Mode=TwoWay}" Header="皮重时间" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding tare,Mode=TwoWay}" Header="皮重" MinWidth="60"/>
+                    <DataGridTextColumn Binding="{Binding grosstime,Mode=TwoWay}" Header="毛重时间" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding gross,Mode=TwoWay}" Header="毛重" MinWidth="60"/>
+                    <DataGridTextColumn Binding="{Binding deductiontime,Mode=TwoWay}" Header="扣重时间" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding deduction,Mode=TwoWay}" Header="扣重值" MinWidth="70"/>
+                    <DataGridTextColumn Binding="{Binding materialcount,Mode=TwoWay}" Header="出库件数" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding sourceplace,Mode=TwoWay}" Header="供货地点" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding targetplace,Mode=TwoWay}" Header="收货地点" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding tareserial,Mode=TwoWay}" Header="船名名称" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding targetname,Mode=TwoWay}" Header="去向名称" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding sourcename,Mode=TwoWay}" Header="来源名称" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding tareweigh,Mode=TwoWay}" Header="皮重衡器名称" MinWidth="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Button Content="确定" FontSize="20" Margin="10,0,10,0" x:Name="ConfirmButton" Style="{StaticResource HandleButtonStyle}" Click="ConfirmButton_Click"/>
+            <!--<Button Content="取消" FontSize="20" x:Name="CancelButton" Margin="10,0,10,0"  Click="CancelButton_Click" Style="{StaticResource HandleButtonStyle}"/>-->
+
+        </StackPanel>
+    </Grid>
+</Window>

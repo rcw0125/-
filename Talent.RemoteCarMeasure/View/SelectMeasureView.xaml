@@ -1,0 +1,33 @@
+﻿<Window x:Class="Talent.RemoteCarMeasure.View.SelectMeasureView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="衡器选择" Height="636" Width="500" Loaded="Window_Loaded"
+        Background="#FF6DAEA6" WindowStartupLocation="CenterScreen" FontFamily="Microsoft YaHei" WindowStyle="None"
+        AllowsTransparency="True" ResizeMode="NoResize">
+    <Grid Margin="0,0,0,17">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnClose" Grid.Column="2" Visibility="Visible"  ToolTip="关闭" VerticalAlignment="Top" Style="{StaticResource ExitButtonStyle}" HorizontalAlignment="Right" Width="40" Height="40" Margin="0,1,1,0" Click="btnClose_Click"/>
+        <GroupBox Name="groupBox" Header="衡器列表" FontSize="18" Grid.Row="0" Margin="10,40,10,98" Foreground="White">
+            <DataGrid x:Name="DataGrid" Margin="5,5,5,1" Foreground="White" CanUserAddRows="False" AutoGenerateColumns="False" CanUserSortColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="20"/>
+                    <DataGridTextColumn Binding="{Binding equcode, Mode=TwoWay}" Header="衡器编码" Width="120"/>
+                    <DataGridTextColumn Binding="{Binding equname,Mode=TwoWay}"  Header="衡器名称"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Button Content="确定" FontSize="20" x:Name="ConfirmButton" Style="{StaticResource HandleButtonStyle}" Click="ConfirmButton_Click"/>
+            <Button Content="取消" FontSize="20" x:Name="CancelButton" Margin="10,0,10,0"  Click="CancelButton_Click" Style="{StaticResource HandleButtonStyle}"/>
+
+        </StackPanel>
+        <RadioButton Name="r1" Content="打印机缺纸" FontSize="16" Margin="9,3,379,8" Grid.Row="1" Checked="RadioButton_Checked"  > </RadioButton>
+        <RadioButton Name="r2" Content="打印机故障" FontSize="16" Margin="9,25,379,6" Grid.Row="1" Checked="RadioButton_Checked_1"></RadioButton>
+        <RadioButton Name="r3" Content="票据丢失" FontSize="16" Margin="9,47,379,-8" Grid.Row="1" Checked="RadioButton_Checked_2"></RadioButton>
+        <TextBlock Text="备注：" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Stretch" Margin="11,472,0,49" Foreground="DarkRed" FontWeight="Bold"/>
+        <TextBox x:Name="msgTxt" TextWrapping="Wrap"   TextAlignment="Left"  Text=""   Foreground="#FF333333" FontSize="16"  Margin="89,470,0,10" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" HorizontalAlignment="Left" Width="398"   />
+    </Grid>
+</Window>

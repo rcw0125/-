@@ -1,0 +1,9 @@
+﻿<Window x:Class="Talent.RemoteCarMeasure.View.CountDownView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        FontFamily="Microsoft YaHei" WindowStyle="None"
+        ResizeMode="NoResize" Background="#FF6DAEA6"  Height="250" Width="462">
+    <Grid>
+        <TextBlock x:Name="tbCountDown" FontWeight="Bold" FontSize="50" Foreground="White" Text="" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+    </Grid>
+</Window>

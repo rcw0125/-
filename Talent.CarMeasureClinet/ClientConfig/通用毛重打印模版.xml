@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Bill script="通用毛重打印模版" code="001">
+  <row type="str" length="20" align="center" width="1"  height="1" line="0" value="Title">
+    <param type="str" length="0" align="right" format="" value="Title"></param>
+  </row>
+  <row  type="str" length="0" align="left"  width="0"  height="0" line="0" value="  operaname      No:matchid">
+    <param type="str" length="0" align="right" format=""  value="operaname"></param>
+    <param type="str" length="0" align="right" format=""  value="matchid"></param>
+  </row>
+  <row type="str" length="0" align="left" width="0"  height="0" line="0" value="-----------------------------------------"></row>
+  <row type="str"  length="0"  align="left"  width="0"  height="0" line="1" value="  车号：carno">
+    <param type="str" length="0" align="right" format=""  value="carno"></param>
+  </row>
+  <row type="str"  length="0"  align="left"  width="0"  height="0" line="1" value="  业务：planid taskcode">
+    <param type="str" length="0" align="right" format=""  value="planid"></param>
+    <param type="str" length="0" align="right" format=""  value="taskcode"></param>
+  </row>
+  <row type="str"  length="0"  align="left"  width="0"  height="0" line="1" value="  货名：materialName ship">
+    <param type="list" length="0" align="left" format="@@"  value="materialName"></param>
+    <param type="str" length="0" align="left" format="  (ship)"  value="ship"></param>
+  </row>
+  <row type="str"  length="0"  align="left"  width="0"  height="0" line="1" value="  供货：sourcename">
+    <param type="str" length="0" align="left" format=""  value="sourcename"></param>
+  </row>
+  <row type="str"  length="0"  align="left"  width="0"  height="0" line="1" value="  收货：targetname">
+    <param type="str" length="0" align="left" format=""  value="targetname"></param>
+  </row>
+  <row type="str"  length="0"  align="left"  width="0"  height="0" line="1" value="  毛重：gross 吨/grossweigh/grosstime">
+    <param type="str" length="0" align="left" format=""  value="grossweigh"></param>
+    <param type="time" length="0" align="left" format="yymmddhhnn"  value="grosstime"></param>
+    <param type="str" length="7" align="right" format=""  value="gross"></param>
+  </row>
+  <row type="str"  length="0"  align="left"  width="0"  height="0" line="0" value="  备注：usermemo">
+    <param type="str" length="7" align="right" format=""  value="usermemo"></param>
+  </row>
+  <row type="str"  length="0"  align="left"  width="0"  height="0" line="0" value=""></row>
+  <row type="str" length="0" align="left" width="0"  height="0" line="0" value="-----------------------------------------"></row>
+  <row type="str" length="0" align="left" width="0"  height="0" line="0" value=" printweigh  printtime">
+    <param type="time" length="0" align="left" format="yy-mm-dd hh:nn:ss"  value="printtime"></param>
+    <param type="str" length="0" align="right" format=""  value="printweigh"></param>
+  </row>
+  <row type="str" length="20" align="center" width="0"  height="0" line="2" value="printset  共 printcount 联">
+    <param type="str" length="0" align="left" format=""  value="printset"></param>
+    <param type="str" length="0" align="left" format=""  value="printcount"></param>
+  </row>
+</Bill>

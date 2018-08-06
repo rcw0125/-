@@ -1,0 +1,17 @@
+﻿<pform:Only_WindowBase x:Class="Talent.RemoteCarMeasure.TestChildForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:VM="clr-namespace:Talent.RemoteCarMeasure.ViewModel"
+        xmlns:pform="clr-namespace:Talent.ClientCommonLib;assembly=Talent.ClientCommonLib"
+        Title="TestChildForm" Height="300" Width="300" Loaded="Only_WindowBase_Loaded">
+    <pform:Only_WindowBase.Resources>
+        <VM:TaskHandleViewModel x:Key="TaskHandleDataSource"/>
+    </pform:Only_WindowBase.Resources>
+    <pform:Only_WindowBase.DataContext>
+        <Binding Source="{StaticResource TaskHandleDataSource}"/>
+    </pform:Only_WindowBase.DataContext>
+    <Grid>
+        <Button Width="100" x:Name="CloseFormBtn" Click="CloseFormBtn_Click" Height="30" Content="关闭窗体" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" />
+        <Image x:Name="imageControl" Width="100" Height="50"/>
+    </Grid>
+</pform:Only_WindowBase>

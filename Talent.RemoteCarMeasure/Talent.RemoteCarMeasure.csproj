@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C39B2ABA-D35A-4514-A8E1-9D6FDA6ED4EE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Talent.RemoteCarMeasure</RootNamespace>
+    <AssemblyName>Talent.RemoteCarMeasure</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Image\SysImage\计量.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="DynamicDataDisplay">
+      <HintPath>..\DLL\Wpf\DynamicDataDisplay.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF4">
+      <HintPath>..\DLL\Wpf\GalaSoft.MvvmLight.Extras.WPF4.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WPF4, Version=4.2.30.23173, Culture=neutral, PublicKeyToken=63eb5c012e0b3c1c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Wpf\GalaSoft.MvvmLight.WPF4.dll</HintPath>
+    </Reference>
+    <Reference Include="GraphicsChartContrl">
+      <HintPath>..\DLL\MeasureImportDLL\GraphicsChartContrl.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\DLL\Log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Drawing">
+      <HintPath>..\bin\debug\Microsoft.Expression.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\DLL\Json\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="SocketIOClient, Version=0.6.26.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\MeasureImportDLL\SocketIOClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
+      <HintPath>..\bin\debug\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Talent.Audio.Controller, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\MeasureImportDLL\Talent.Audio.Controller.dll</HintPath>
+    </Reference>
+    <Reference Include="Talent.Audio.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\MeasureImportDLL\Talent.Audio.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Talent.ClientCommMethod, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\MeasureImportDLL\Talent.ClientCommMethod.dll</HintPath>
+    </Reference>
+    <Reference Include="TalentLT, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\LT\TalentLT.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Reporting">
+      <HintPath>..\DLL\Telerik\Telerik.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls">
+      <HintPath>..\DLL\Telerik\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input">
+      <HintPath>..\DLL\Telerik\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation">
+      <HintPath>..\DLL\Telerik\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data">
+      <HintPath>..\DLL\Telerik\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WebSocket4Net">
+      <HintPath>..\DLL\SocketIO\WebSocket4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\MeasureImportDLL\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\DLL\Wpf\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Commom\ConfigReader.cs" />
+    <Compile Include="Commom\Control\ChangeSkinColor.xaml.cs">
+      <DependentUpon>ChangeSkinColor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commom\Control\Countdown.xaml.cs">
+      <DependentUpon>Countdown.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commom\LogSync.cs" />
+    <Compile Include="Commom\RenderMainUI.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commom\VoiceRemindHelper.cs" />
+    <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Model\ClientInfo.cs" />
+    <Compile Include="Model\WeightAttentionModel.cs" />
+    <Compile Include="Model\WeightRecordModel.cs" />
+    <Compile Include="Report\ReportNoData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportNoData.Designer.cs">
+      <DependentUpon>ReportNoData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportTest.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportTest.Designer.cs">
+      <DependentUpon>ReportTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskHandleView.xaml.cs">
+      <DependentUpon>TaskHandleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestChildForm.xaml.cs">
+      <DependentUpon>TestChildForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestForm.xaml.cs">
+      <DependentUpon>TestForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\ModifyPasswordViewModel.cs" />
+    <Compile Include="ViewModel\QueryDataViewModel.cs" />
+    <Compile Include="ViewModel\RemoteCarMeasureViewModel.cs" />
+    <Compile Include="ViewModel\TaskHandleViewModel.cs" />
+    <Compile Include="ViewModel\TaskStatViewModel.cs" />
+    <Compile Include="ViewModel\TestClientInfoViewModel.cs" />
+    <Compile Include="ViewModel\VideoMonitorViewModel.cs" />
+    <Compile Include="ViewModel\WeightCurveViewModel.cs" />
+    <Compile Include="View\CloseHandleTask.xaml.cs">
+      <DependentUpon>CloseHandleTask.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CommUI_ClientInfo.xaml.cs">
+      <DependentUpon>CommUI_ClientInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConfirmMessageBox.xaml.cs">
+      <DependentUpon>ConfirmMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CountDownView.xaml.cs">
+      <DependentUpon>CountDownView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ModifyPasswordView.xaml.cs">
+      <DependentUpon>ModifyPasswordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QueryDataView.xaml.cs">
+      <DependentUpon>QueryDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SelectedTaskBusinessView.xaml.cs">
+      <DependentUpon>SelectedTaskBusinessView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SelectMeasureView.xaml.cs">
+      <DependentUpon>SelectMeasureView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SetHongWaiView.xaml.cs">
+      <DependentUpon>SetHongWaiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShowHistoryTareView.xaml.cs">
+      <DependentUpon>ShowHistoryTareView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShowLikeWeightView.xaml.cs">
+      <DependentUpon>ShowLikeWeightView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShowVideoTapeView.xaml.cs">
+      <DependentUpon>ShowVideoTapeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TaskCountView.xaml.cs">
+      <DependentUpon>TaskCountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TestChildView.xaml.cs">
+      <DependentUpon>TestChildView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VideoMonitorView.xaml.cs">
+      <DependentUpon>VideoMonitorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WeightClientAttentionUpholdView.xaml.cs">
+      <DependentUpon>WeightClientAttentionUpholdView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WeightClientSendNoticeView.xaml.cs">
+      <DependentUpon>WeightClientSendNoticeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WeightCurveView.xaml.cs">
+      <DependentUpon>WeightCurveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TaskHandleSendNoticeView.xaml.cs">
+      <DependentUpon>TaskHandleSendNoticeView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Commom\Control\ChangeSkinColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Commom\Control\Countdown.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="TaskHandleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestChildForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CloseHandleTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CommUI_ClientInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ConfirmMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CountDownView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ModifyPasswordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QueryDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SelectedTaskBusinessView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SelectMeasureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SetHongWaiView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ShowHistoryTareView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ShowLikeWeightView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ShowVideoTapeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TaskCountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TestChildView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VideoMonitorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WeightClientAttentionUpholdView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WeightClientSendNoticeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\WeightCurveView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TaskHandleSendNoticeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportTest.resx">
+      <DependentUpon>ReportTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="..\Common\Talent.ClientLog\Log4Net.config">
+      <Link>ClientConfig\Log4Net.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\SysImage\+1.png" />
+    <Resource Include="Image\SysImage\+2.png" />
+    <Resource Include="Image\SysImage\计量.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\SysImage\BtnClose1.png" />
+    <Resource Include="Image\SysImage\BtnClose2.png" />
+    <Resource Include="Image\SysImage\BtnLoginBK1.png" />
+    <Resource Include="Image\SysImage\BtnLoginBK2.png" />
+    <Resource Include="Image\SysImage\BtnMin1.png" />
+    <Resource Include="Image\SysImage\BtnMin2.png" />
+    <Resource Include="Image\SysImage\LoginBK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\SysImage\more_menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\SysImage\auto_cal.png" />
+    <Resource Include="Image\SysImage\bell.png" />
+    <Resource Include="Image\SysImage\data_que.png" />
+    <Resource Include="Image\SysImage\system_mana.png" />
+    <Resource Include="Image\SysImage\task_title.png" />
+    <Resource Include="Image\SysImage\task_waiting_title.png" />
+    <Resource Include="Image\SysImage\time_icon.png" />
+    <Resource Include="Image\SysImage\usr_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\SysImage\arrowLeft_gray.png" />
+    <Resource Include="Image\SysImage\arrowLeft_red.png" />
+    <Resource Include="Image\SysImage\arrowRight_gray.png" />
+    <Resource Include="Image\SysImage\arrowRight_red.png" />
+    <Resource Include="Image\SysImage\dialogue.png" />
+    <Resource Include="Image\SysImage\image.png" />
+    <Resource Include="Image\SysImage\pauseweight.png" />
+    <Resource Include="Image\SysImage\playback.png" />
+    <Resource Include="Image\SysImage\readdata.png" />
+    <Resource Include="Image\SysImage\sureweight.png" />
+    <Resource Include="Image\SysImage\voice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\SysImage\-1.png" />
+    <Resource Include="Image\SysImage\-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\SysImage\LoginBK2.png" />
+    <Resource Include="Image\SysImage\LoginCar.png" />
+    <Resource Include="Image\SysImage\LoginScales.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\SysImage\GPRS_link.png" />
+    <Resource Include="Image\SysImage\GPRS_unlink.png" />
+    <Resource Include="Image\SysImage\server_link.png" />
+    <Resource Include="Image\SysImage\server_unlink.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\CarImage\1.png" />
+    <Resource Include="Image\CarImage\2.png" />
+    <Resource Include="Image\CarImage\3.png" />
+    <Resource Include="Image\CarImage\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\CarImage\5.png" />
+    <Resource Include="Image\CarImage\6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\SysImage\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\SysImage\data_icon.png" />
+    <Resource Include="Image\SysImage\pic_icon.png" />
+    <Resource Include="Image\SysImage\print_icon.png" />
+    <Resource Include="Image\SysImage\remote_icon.png" />
+    <Resource Include="Image\SysImage\task_icon.png" />
+    <Resource Include="Image\SysImage\video_icon.png" />
+    <Resource Include="Image\SysImage\weight_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\SysImage\BtnLogOut1.png" />
+    <Resource Include="Image\SysImage\BtnLogOut2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CarMeasureClient\" />
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\SysImage\rzgt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\SysImage\ChangeSkin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClientConfig\SystemConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Talent.ClientLog\Talent.ClientLog.csproj">
+      <Project>{eb305be1-a19d-4c26-82fc-8062b66029df}</Project>
+      <Name>Talent.ClientLog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Talnet.CommonMethod\Talent.CommonMethod.csproj">
+      <Project>{add2b8b9-06e5-4e0e-8f2d-cc9d8f8a7c90}</Project>
+      <Name>Talent.CommonMethod</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hardware\VideoControl\Talent.Video.Controller\Talent.Video.Controller.csproj">
+      <Project>{02901d6b-4562-4689-90ba-b0d0ec31ed76}</Project>
+      <Name>Talent.Video.Controller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hardware\VideoControl\Talent.Video.Interface\Talent.Video.Interface.csproj">
+      <Project>{fb7bb109-42c7-4288-a9ca-339502d36358}</Project>
+      <Name>Talent.Video.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Talent.AutoUpdate\Talent.AutoUpdate.csproj">
+      <Project>{1062b582-c326-4702-a22e-b743e9703a61}</Project>
+      <Name>Talent.AutoUpdate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Talent.HardwareDLL\Talent.HardwareDLL.csproj">
+      <Project>{d4d92670-5495-40aa-ac6c-4cfbdeb4d0d5}</Project>
+      <Name>Talent.HardwareDLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Talent.Measure.DomainModel\Talent.Measure.DomainModel.csproj">
+      <Project>{b01309f0-be2b-483d-aa20-a3d4d0c231ef}</Project>
+      <Name>Talent.Measure.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Talent.Measure.WPF\Talent.Measure.WPF.csproj">
+      <Project>{22d9f54b-6197-4cbf-a667-064b75339f28}</Project>
+      <Name>Talent.Measure.WPF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Talnet.ClinetCommonLib\Talent.ClientCommonLib.csproj">
+      <Project>{c5abc99d-2a97-4f87-b1d3-75334be96b71}</Project>
+      <Name>Talent.ClientCommonLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RING.WAV">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,28 @@
+﻿<Window x:Class="Talent.RemoteCarMeasure.Commom.Control.ChangeSkinColor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ChangeSkinColor" Height="183" Width="300" WindowStyle="None" WindowStartupLocation="Manual" Background="AliceBlue"  MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="28" />
+            <RowDefinition Height="28" />
+            <RowDefinition Height="28" />
+            <RowDefinition Height="28" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="65*" />
+            <ColumnDefinition Width="213*" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" HorizontalContentAlignment="Right" Visibility="Hidden">透明度：</Label>
+        <Label Grid.Row="1" HorizontalContentAlignment="Right">红色：</Label>
+        <Label Grid.Row="2" HorizontalContentAlignment="Right">绿色：</Label>
+        <Label Grid.Row="3" HorizontalContentAlignment="Right">蓝色：</Label>
+        <Slider Grid.Row="0" Grid.Column="1" Margin="3" Name="a" SmallChange="1" LargeChange="15" Maximum="255" Value="255" ValueChanged="a_ValueChanged" Visibility="Hidden" />
+        <Slider Grid.Row="1" Grid.Column="1" Margin="3" Name="r" SmallChange="1" LargeChange="15" Maximum="255" Value="255" ValueChanged="r_ValueChanged"/>
+        <Slider Grid.Row="2" Grid.Column="1" Margin="3" Name="g" SmallChange="1" LargeChange="15" Maximum="255" Value="255" ValueChanged="g_ValueChanged"/>
+        <Slider Grid.Row="3" Grid.Column="1" Margin="3" Name="b" SmallChange="1" LargeChange="15" Maximum="255" Value="255" ValueChanged="b_ValueChanged"/>
+        <Button Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" Margin="140,22,0,14" Name="button1" Width="75" Click="button1_Click">更新颜色</Button>
+        <Button Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" Margin="56,22,0,14" x:Name="button2" Width="75" Click="button2_Click" Content="取消"/>
+    </Grid>
+</Window>
