@@ -2801,7 +2801,7 @@ namespace Talent.CarMeasureClient.ViewModel
             }
         }
         /// <summary>
-        /// 登录任务服务器
+        /// 登录任务服务器 向任务服务器发送客户端信息
         /// </summary>
         private void relogin()
         {
@@ -6357,6 +6357,8 @@ namespace Talent.CarMeasureClient.ViewModel
         {
             try
             {
+                //那么到底什么是Dispatcher呢？从字面上来说，它是所谓的接线员，或者调度员的意思。
+                //这说明什么呢？每个线程都有一个唯一的调度员，我们在代码中所做的工作其实是向这个调度员发出指令，然后它再帮我们做
                 System.Windows.Application.Current.Dispatcher.Invoke(() =>
                 {
                     int childCount = gridReader.Children.Count;
