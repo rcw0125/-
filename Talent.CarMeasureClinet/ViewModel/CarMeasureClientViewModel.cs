@@ -2258,7 +2258,7 @@ namespace Talent.CarMeasureClient.ViewModel
         }
 
         /// <summary>
-        /// 结束任务
+        /// 结束任务  保存图片
         /// </summary>
         private void EndTask(string msg)
         {
