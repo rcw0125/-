@@ -7499,7 +7499,7 @@ namespace Talent.CarMeasureClient.ViewModel
                 }
                 if (Weight > maxAllowWeight)
                 {
-                    SetShowInfoMsg("系统提示", "当前重量已经超过最大量程：" + maxAllowWeight + "请拨打大厅电话", false);
+                    SetShowInfoMsg("系统提示", " 当前重量已经超过最大量程：" + maxAllowWeight + "请拨打大厅电话", false);
                     IsShowWeightInfo = Visibility.Hidden;
                 }
             }
