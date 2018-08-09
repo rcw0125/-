@@ -1657,7 +1657,7 @@ namespace Talent.RemoteCarMeasure.ViewModel
         }
 
         /// <summary>
-        /// 获取任务对象中的卡号
+        /// 获取任务对象中的卡号 ic卡号
         /// </summary>
         /// <returns></returns>
         private string GetICCard()

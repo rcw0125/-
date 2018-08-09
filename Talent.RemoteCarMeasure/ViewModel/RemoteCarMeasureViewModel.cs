@@ -1241,7 +1241,7 @@ namespace Talent.RemoteCarMeasure.ViewModel
                 isStartSysTimer = false;//是否启动任务提示铃音或者自动回退任务……
                 AcceptTaskTime = 0;//任务等待时间变为0
                 seatMainWindow.Topmost = false;
-                DoClientState();//处理衡器显示状态……lt 2016-2-18 16:50:10……
+                DoClientState();//处理衡器显示状态……lt 2016-2-18 16:50:10…… 通知衡器，正在计量
                 //ShowMessage("提示", "确定接收新任务?\r\n\r\n【确定】:接收新任务。\r\n\r\n【取消】:回退任务。", true, true, "AcceptTask");
                 //取消弹出提示框，直接打开任务处理界面…… lt 2016-2-15 13:15:08……
                 //this.ProcessTaskStartTime = DateTime.Now;
@@ -2474,6 +2474,7 @@ namespace Talent.RemoteCarMeasure.ViewModel
                 DisposeTaskViewImage();
                 currentTaskHView = null;
                 AfterTaskHandle();
+                //计算当前程序所占内存的大小（M），大于1000M时，将重新启动程序
                 double memorySize = FlushMemory();
                 if (memorySize >= 1000)
                 {

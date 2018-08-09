@@ -815,7 +815,11 @@ namespace Talent.RemoteCarMeasure
                 }
             }
         }
-
+        /// <summary>
+        /// 窗体加载事件， 使用了线程打开视频， 同时加载viewmodel的inITforms方法
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadLastLocation();
@@ -826,7 +830,7 @@ namespace Talent.RemoteCarMeasure
             Talent.ClinetLog.SysLog.Log("----------------------------------------------------------------------------------任务处理开始----------------------------------------------------------------------------------");
 
             ReadVideoConfig();
-            //OpenFirstVideo();
+            //OpenFirstVideo(); 打开视频
             Thread t1 = new Thread(new ThreadStart(VideoOpen));
             t1.IsBackground = true;
             t1.Start();
@@ -843,7 +847,7 @@ namespace Talent.RemoteCarMeasure
         }
 
         /// <summary>
-        /// 构造窗体数据
+        /// 构造窗体数据  没有引用
         /// </summary>
         private void initInfo()
         {
@@ -869,7 +873,7 @@ namespace Talent.RemoteCarMeasure
         }
 
         /// <summary>
-        /// 打开视频
+        /// 打开视频 打开第一个大视频后，依次打开各个小视频窗口
         /// </summary>
         private void VideoOpen()
         {

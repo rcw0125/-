@@ -2095,6 +2095,7 @@ namespace Talent.CarMeasureClient.ViewModel
                 case "logout"://退出成功
                     TaskServerConnState = false;
                     break;
+                    //当坐席发送结束任务命令时，任务服务器接收到，发送给称终端
                 case "sendReply":
                     EndTask(e.Message);
                     break;
@@ -4253,6 +4254,9 @@ namespace Talent.CarMeasureClient.ViewModel
         }
         /// <summary>
         /// 取数完毕事件(重量取数完毕后启动第一个服务)
+        /// 取数计时器，取数计时器结束后，即在一个取数周期内，是否取到了稳定的重量，如果没有，则开始下一个取数周期
+        /// 若多个取数周期达到规定次数weightTimeCount依旧没有取到稳定重量，则转坐席
+        /// 取到稳定总量后，则，调用服务
         /// </summary>
         /// <param name="userdata"></param>
         void timer_TimeOver(object userdata)
