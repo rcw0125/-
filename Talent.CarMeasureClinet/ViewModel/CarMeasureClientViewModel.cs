@@ -120,7 +120,7 @@ namespace Talent.CarMeasureClient.ViewModel
         bool IsSaveAllWeightData = false;
 
         /// <summary>
-        /// 是否取数的开关
+        /// 是否取数的开关，重量启动方式下使用
         /// </summary>
         public bool IsGetWeight { get; set; }
         /// <summary>
@@ -140,13 +140,16 @@ namespace Talent.CarMeasureClient.ViewModel
         /// </summary>
         private Calculagraph fullScreenTimer;
         /// <summary>
-        /// 称重读数列表
+        /// 称重读数列表，重量启动方式下使用，当前启动方式不使用
         /// </summary>
         List<decimal> listWeights = new List<decimal>();
         /// <summary>
         /// 记录表头记录
         /// </summary>
         WeightRealData wRealData = new WeightRealData();
+        /// <summary>
+        /// 记录重量曲线数据
+        /// </summary>
         List<WeightRecordData> recorddatalist = new List<WeightRecordData>();
         private string _leftLed;
         /// <summary>
@@ -553,6 +556,7 @@ namespace Talent.CarMeasureClient.ViewModel
                     SaveWeightToVideo();
                     if (value > 0)
                     {
+                        //在重量启动方式下，才会执行
                         if (IsGetWeight)
                         {
                             listWeights.Add(Weight);
@@ -1030,10 +1034,12 @@ namespace Talent.CarMeasureClient.ViewModel
                     _BullState = value;
                     if (value == eBullTag.free)
                     {
+                        //初始化数据
                         InitBusiness();
                     }
                     else if (value == eBullTag.weight)
                     {
+                        //打开信号灯
                         #region 写日志
                         LogModel log = new LogModel()
                         {
@@ -1063,6 +1069,7 @@ namespace Talent.CarMeasureClient.ViewModel
                         };
                         Talent.ClinetLog.SysLog.Log(JsonConvert.SerializeObject(log));
                         #endregion
+                        //启动ic卡和RFID卡
                         CheckBusinessRule();
                     }
                     else if (value == eBullTag.end)//和硬件连接时，没有下面这些代码
@@ -1374,7 +1381,7 @@ namespace Talent.CarMeasureClient.ViewModel
         /// </summary>
         decimal moveCardMaxWeight = 0;
         /// <summary>
-        /// 磅差
+        /// 磅差 5000固定值
         /// </summary>
         decimal moreOrLessWeight = 5000;
         /// <summary>
@@ -1901,7 +1908,7 @@ namespace Talent.CarMeasureClient.ViewModel
                 //SetShowInfoMsg("系统初始化中", "初始化硬盘录像机完成......", false);
                 //写视频……
                 //SetShowInfoMsg("系统初始化中", "准备初始化写入重量视频......", false);
-                SaveWeightVideo();
+                SaveWeightVideo();//方法已被注释
                 //SetShowInfoMsg("系统初始化中", "初始化写入重量视频完成......", false);
                 //获取秤体最大量程                
                 GetMaxAllowWeight();
@@ -2544,6 +2551,7 @@ namespace Talent.CarMeasureClient.ViewModel
             LogModel log;
             switch (cp.msg.cmd)
             {
+                //当坐席通过服务获取业务信息后，会向任务服务器发送UpdateInfo业务数据同步命令，使坐席和称点数据保持一致
                 case "UpdateInfo"://业务数据同步
 
                     RefreshMeasureInfo(cp.msg.msg.ToString());
@@ -2717,10 +2725,17 @@ namespace Talent.CarMeasureClient.ViewModel
 
 
                     break;
+                //当坐席保存重量完成后，会向任务服务器发送打印命令（正常打印）
+                //2.坐席可以在查询节点发送补打命令，称点进行补打
+                #region 接收到坐席的数据
+                //{"clientid":"104","cmd":"Supplement",
+                //"msg":{"matchid":"8018080100255","opname":"樊军","opcode":"14610","clientcode":"104","clientname":"原料80t","carno":"冀EF0579","printtype":"正常","TicketType":0},"msgid":643},
+                //"ParamList":[{"ParamName":"cmd","ParamValue":"cmd2client"}],"IsDataValid":"有效"}
+                #endregion:
                 case "Supplement":
                     SupplementTicket(cp.msg.msg.ToString());
                     break;
-                case "ClientUpdate":
+                case "ClientUpdate"://方法已被注释，不再使用
                     AutoUpdateVersion();
                     #region 写日志
                     log = new LogModel()
@@ -2742,7 +2757,7 @@ namespace Talent.CarMeasureClient.ViewModel
                 case "ClientStop":
                     ClientStop(cp);
                     break;
-                //接收到通知消息
+                //接收到通知消息（中间的滚动信息）
                 case "UserNotice":
                     GetUserNotice(cp);
                     break;
@@ -2766,7 +2781,7 @@ namespace Talent.CarMeasureClient.ViewModel
         }
 
         /// <summary>
-        /// 称点版本更新方法实现
+        /// 称点版本更新方法实现（当前不用）
         /// </summary>
         private void AutoUpdateVersion()
         {
@@ -2855,7 +2870,7 @@ namespace Talent.CarMeasureClient.ViewModel
 
         }
         /// <summary>
-        /// 服务送达完毕事件
+        /// 服务送达完毕事件（randomtimer没有start方法，当前没有使用）
         /// </summary>
         /// <param name="userdata"></param>
         void randomtimer_TimeOver(object userdata)
@@ -2875,6 +2890,7 @@ namespace Talent.CarMeasureClient.ViewModel
 
         /// <summary>
         /// 重发任务计时器事件(检测送达的任务是否存在)
+        /// 仔细研究
         /// </summary>
         /// <param name="userdata"></param>
         void resendTaskTimer_TimeOver(object userdata)
@@ -2947,6 +2963,7 @@ namespace Talent.CarMeasureClient.ViewModel
 
         /// <summary>
         /// 是否全屏检测时间到
+        /// （超时，计时器停止，HasStarted为false，这时重新启动计时器）
         /// </summary>
         /// <param name="userdata"></param>
         void fullScreenTimer_TimeOver(object userdata)
@@ -3046,7 +3063,9 @@ namespace Talent.CarMeasureClient.ViewModel
                     PrintState = printError,
                     RfidStrs = GetRfidStr()
                 };
+                
                 string paraJsonStr = InfoExchange.ToJson(paramObj);
+                //发送称点状态数据给任务服务器
                 SocketCls.Emit(ClientSendCmdEnum.realData, paraJsonStr);
                 //if (EquTag.Equals("RLL") || EquTag.Equals("RLR"))
                 //{
@@ -4267,6 +4286,7 @@ namespace Talent.CarMeasureClient.ViewModel
 
         }
         /// <summary>
+        /// 重量启动方式，才会执行，当前不执行
         /// 取数完毕事件(重量取数完毕后启动第一个服务)
         /// 取数计时器，取数计时器结束后，即在一个取数周期内，是否取到了稳定的重量，如果没有，则开始下一个取数周期
         /// 若多个取数周期达到规定次数weightTimeCount依旧没有取到稳定重量，则转坐席
@@ -5123,7 +5143,8 @@ namespace Talent.CarMeasureClient.ViewModel
             }
         }
         /// <summary>
-        /// 保存重量.
+        /// 保存重量.  保存成功后，保存图片，保存打印，更换界面颜色
+        /// 当前不执行
         /// </summary>
         public void saveWeightServiceInfo()
         {
@@ -5747,6 +5768,7 @@ namespace Talent.CarMeasureClient.ViewModel
         }
         /// <summary>
         /// 打印票据(正常/补打)
+        /// "matchid":"8018080100255","opname":"樊军","opcode":"14610","clientcode":"104","clientname":"原料80t","carno":"冀EF0579","printtype":"正常","TicketType":0},"msgid":643
         /// </summary>
         /// <param name="measureJsonStr">称量记录json字符串</param>
         private void SupplementTicket(string measureJsonStr)
@@ -5763,9 +5785,11 @@ namespace Talent.CarMeasureClient.ViewModel
                 try
                 {
                     printModel = InfoExchange.DeConvert(typeof(PrintInfo), measureJsonStr) as PrintInfo;
+                    //车号和打印类型（正常和补打）
                     printCarNo = printModel.carno;
                     printState = printModel.printtype;
-                    if (!string.IsNullOrEmpty(CarNumber))//存在读取到的车号
+                    #region 存在读取到的车号  校验读取到的车号和接收到的要打印的车号是否一致，不一致则回传给坐席,当前称体车号为空，不允许正常打印票据（只能是补打）
+                    if (!string.IsNullOrEmpty(CarNumber))//存在读取到的车号  校验读取到的车号和接收到的要打印的车号是否一致，不一致则回传给坐席
                     {
                         if (!printCarNo.Equals(CarNumber))//存在读取车号与打印车号 不一致  返回
                         {
@@ -5784,7 +5808,7 @@ namespace Talent.CarMeasureClient.ViewModel
                             return;
                         }
                     }
-                    else
+                    else //当前称体车号为空，不允许正常打印票据（只能是补打）
                     {
                         if (printState.Equals("正常"))
                         {
@@ -5803,6 +5827,8 @@ namespace Talent.CarMeasureClient.ViewModel
                             return;
                         }
                     }
+                    #endregion
+
                     #region 写日志
                     LogModel rLog = new LogModel()
                     {
@@ -5815,6 +5841,7 @@ namespace Talent.CarMeasureClient.ViewModel
                     };
                     Talent.ClinetLog.SysLog.Log(JsonConvert.SerializeObject(rLog));
                     #endregion
+                    //打印方法
                     GetPrintModelData();
                     //向服务回写出票信息
                     //SavePrintBillToServer(printInfo);
@@ -6435,7 +6462,7 @@ namespace Talent.CarMeasureClient.ViewModel
             }
         }
         /// <summary>
-        /// 系统暂停计量
+        /// 系统暂停计量（关闭IC卡、RFID卡）
         /// </summary>
         private void ClientStop(CommandParam cp)
         {

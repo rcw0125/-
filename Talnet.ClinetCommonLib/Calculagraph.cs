@@ -6,6 +6,9 @@ using System.Threading;
 
 namespace Talent.ClientCommonLib
 {
+    /// <summary>
+    /// 计时器，（超时则停止，有TimeOver和timeTrigger事件）
+    /// </summary>
     public class Calculagraph
     {
         /// <summary>

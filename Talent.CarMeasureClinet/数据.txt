@@ -1,3 +1,72 @@
+坐席发过来的打印信息 PrintInfo模型： {"clientid":"104","cmd":"Supplement",
+"msg":{"matchid":"8018080100255","opname":"樊军","opcode":"14610","clientcode":"104","clientname":"原料80t","carno":"冀EF0579","printtype":"正常","TicketType":0},"msgid":643},
+"ParamList":[{"ParamName":"cmd","ParamValue":"cmd2client"}],"IsDataValid":"有效"}
+称点请求打印模型数据：
+http://192.168.2.42:7080/MeasureService/PrintController/rtPrintModelData.do?jsonParams=[{"matchid":"8218012500055","opname":"","opcode":"","equcode":"","equname":"","carno":"","printtype":""}]
+获得的数据如下：
+<?xml version='1.0' encoding='UTF-8'?>
+<ArrayOfBill>
+    <Bill Script="出厂销售">
+        <row type="str" length="0" align="left" width="0" height="0" line="2" value="">
+    </row>
+        <row type="str" length="20" align="center" width="1" height="1" line="1" value="邢台计量单">
+            <param type="str" length="0" align="center" format="">磅单打印</param>
+            <param type="str" length="0" align="center" format="(ReDo)">ReDo</param>
+        </row>
+        <row type="str" length="0" align="left" width="0" height="0" line="0" value="  其他销售计重  非结算单据    No:8218012500055">
+            <param type="str" length="0" align="right" format="">其他销售计重</param>
+            <param type="str" length="0" align="right" format="">8218012500055</param>
+        </row>
+        <row type="str" length="0" align="left" width="0" height="0" line="0" value="-----------------------------------------"></row>
+        <row type="str" length="0" align="left" width="0" height="0" line="0" value="车号：冀ER9429">
+            <param type="str" length="0" align="right" format="">冀ER9429</param>
+        </row>
+        <row type="str" length="0" align="left" width="0" height="0" line="0" value="单号：8218012790 ">
+            <param type="str" length="0" align="right" format="">8218012790</param>
+            <param type="str" length="0" align="right" format=""></param>
+        </row>
+        <row type="str" length="0" align="left" width="0" height="0" line="0" value="货名：废耐材 0.0(吨) 0(支)">
+            <param type="list" length="0" align="left" format="@@">废耐材</param>
+            <param type="str" length="0" align="right" format="@@">0</param>
+            <param type="str" length="0" align="right" format="@@">0.0</param>
+        </row>
+        <row type="str" length="0" align="left" width="0" height="0" line="0" value="供货：实业公司">
+            <param type="str" length="0" align="left" format="">实业公司</param>
+        </row>
+        <row type="str" length="0" align="left" width="0" height="0" line="0" value="收货：桥西区恒丰炉料经销处">
+            <param type="str" length="0" align="left" format="">桥西区恒丰炉料经销处</param>
+        </row>
+        <row type="str" length="0" align="left" width="0" height="0" line="0" value="毛重：75.04 吨/180125104639/东南门150t">
+            <param type="str" length="0" align="left" format="">东南门150t</param>
+            <param type="time" length="0" align="left" format="yyMMddHHmmss">180125104639</param>
+            <param type="str" length="7" align="right" format="">75.04</param>
+        </row>
+        <row type="str" length="0" align="left" width="0" height="0" line="0" value="皮重：20.3 吨/180125093316/东南门150t">
+            <param type="str" length="0" align="left" format="">东南门150t</param>
+            <param type="time" length="0" align="left" format="yyMMddHHmmss">180125093316</param>
+            <param type="str" length="7" align="right" format="">20.3</param>
+        </row>
+        <row type="str" length="0" align="left" width="0" height="0" line="0" value="扣重：0.0 吨">
+            <param type="str" length="7" align="right" format="">0.0</param>
+        </row>
+        <row type="str" length="0" align="left" width="0" height="0" line="0" value="净重：54.74 吨/180125104639">
+            <param type="time" length="0" align="left" format="yyMMddHHmmss">180125104639</param>
+            <param type="str" length="7" align="right" format="">54.74</param>
+        </row>
+        <row type="str" length="0" align="left" width="0" height="0" line="0" value="备注： 重量以计量单为准">
+            <param type="str" length="0" align="right" format=""> 重量以计量单为准</param>
+        </row>
+        <row type="str" length="0" align="left" width="0" height="0" line="0" value="-----------------------------------------"></row>
+        <row type="str" length="0" align="left" width="0" height="0" line="0" value="  第8次打印">
+            <param type="str" length="0" align="right" format=""></param>
+            <param type="str" length="0" align="right" format="">8</param>
+        </row>
+        <row type="str" length="20" align="center" width="0" height="0" line="2" value=" 共 1 联 2018-08-10 15:05:45  第1联">
+            <param type="time" length="0" align="left" format="yyyy-MM-dd HH:mm:ss">2018-08-10 15:05:45</param>
+        </row>
+    </Bill>
+</ArrayOfBill>
+
 
 http://192.168.2.42:7080/MeasureService/measure/getMeasureInfobyCarno.do?carno=冀EC3131&icid=A752CB59&rfid=E2000016060F028713708F12,&caller=1&planid=&weightno=105&carflag=1&weight=84020
 {
