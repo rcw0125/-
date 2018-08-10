@@ -1778,6 +1778,7 @@ namespace Talent.RemoteCarMeasure.ViewModel
 
         /// <summary>
         /// 获取任务服务器传来的任务
+        /// 接收到从任务服务器发来的任务
         /// </summary>
         /// <param name="obj"></param>
         private void GetTask(string taskJsonStr)

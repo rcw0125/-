@@ -315,6 +315,7 @@
     </None>
     <Content Include="bin\Debug\Microsoft.Expression.Interactions.dll" />
     <Content Include="bin\Debug\System.Windows.Interactivity.dll" />
+    <Resource Include="ClientConfig\数据.txt" />
     <Content Include="ClientConfig\通用票据净重模版.xml" />
     <Content Include="ClientConfig\通用毛重打印模版.xml" />
     <Resource Include="Resources\Images\FileSync.ico">

@@ -94,6 +94,9 @@ namespace Talent.CarMeasureClient
         ComputerInfoHelpClass cpH = new ComputerInfoHelpClass();
         DateTime firstStartTime = Convert.ToDateTime("1799-01-01 00:00:00");
         int runTimeCount = 0;
+        /// <summary>
+        /// 构造函数，1.窗体加载 2.获取倒计时动画3.调用vm里的方法
+        /// </summary>
         public MainWindow()
         {
             try

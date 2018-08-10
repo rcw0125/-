@@ -3322,6 +3322,11 @@ namespace Talent.CarMeasureClient.ViewModel
         }
         #endregion
         #region IC卡注册
+        /// <summary>
+        /// 初始化IC卡，打开IC卡  ，打开后调用RFID卡的初始化方法
+        /// </summary>
+        /// <param name="configUrl"></param>
+        /// <returns></returns>
         private bool initIcController(string configUrl)
         {
             LogModel log;
@@ -3446,6 +3451,7 @@ namespace Talent.CarMeasureClient.ViewModel
 
         /// <summary>
         /// 接收到卡号后的处理方法
+        /// IC卡接收到卡号后，关闭RFID接收
         /// </summary>
         public void ReceiveIcNo(string icCardNo, string pComPortNo = "")
         {
@@ -3614,6 +3620,10 @@ namespace Talent.CarMeasureClient.ViewModel
 
 
         #region RFID卡注册
+        /// <summary>
+        /// 初始化RFID卡  （其实启动方式为IC卡，该方法并未被调用，initRfidControllerNoParam被调用）
+        /// </summary>
+        /// <param name="configUrl"></param>
         public void initRfidController(string configUrl)
         {
             #region 写日志
@@ -3693,7 +3703,10 @@ namespace Talent.CarMeasureClient.ViewModel
                 #endregion
             }
         }
-
+        /// <summary>
+        /// 初始化RFID卡 （当前使用）
+        /// </summary>
+        /// <param name="pConfig"></param>
         public void initRfidControllerNoParam(string pConfig)
         {
             #region 写日志
@@ -4188,6 +4201,7 @@ namespace Talent.CarMeasureClient.ViewModel
         #region 计量相关方法
         /// <summary>
         /// 判断称量前的业务规则是否满足
+        /// 根据计量启动方式，启动相应的设备进行校验。（如重量+IC卡）
         /// </summary>
         private void CheckBusinessRule()
         {
@@ -4196,22 +4210,22 @@ namespace Talent.CarMeasureClient.ViewModel
                 case 0://重量启动
                     TimerStart();
                     break;
-                case 1://IC卡启动
+                case 1://IC卡启动  重量+IC卡 （现场用的这种启动方式）
                     if (this.initIcController(this.configUrl))
                     {
                         //SetShowInfoMsg("", this.SKStr, false);//提示刷卡信息                       
                     }
                     break;
-                case 2://Rfid启动
+                case 2://Rfid启动  重量+RFID卡
                     this.initRfidController(this.configUrl);
                     SetShowInfoMsg("", this.SKStr, false);//提示刷卡信息
                     break;
-                case 3://Ic+Rfid启动
+                case 3://Ic+Rfid启动  重量+IC卡+RFID卡
                     this.initIcController(this.configUrl);
                     this.initRfidController(this.configUrl);
                     SetShowInfoMsg("", this.SKStr, false);//提示刷卡信息
                     break;
-                case 4://Ic或Rfid启动
+                case 4://Ic或Rfid启动  （没有这种情况）
                     this.initIcController(this.configUrl);
                     this.initRfidController(this.configUrl);
                     SetShowInfoMsg("", this.SKStr, false);//提示刷卡信息
@@ -4529,7 +4543,7 @@ namespace Talent.CarMeasureClient.ViewModel
         }
 
         /// <summary>
-        /// 判断卡有效性验证
+        /// 判断卡有效性验证，获取卡的信息
         /// </summary>
         /// <param name="RecordType">（0 表示IC卡、1表示RFID卡、2表示车号）</param>
         /// <param name="No">号</param>
@@ -4581,7 +4595,7 @@ namespace Talent.CarMeasureClient.ViewModel
             {
                 MeasureServiceModel mServiceModel;
                 string strResultSResult = ComHelpClass.ResponseStr(asyc);
-                measureServiceResult = strResultSResult;
+                measureServiceResult = strResultSResult;               
                 mServiceModel = InfoExchange.DeConvert(typeof(MeasureServiceModel), strResultSResult) as MeasureServiceModel;
                 #region 日志
                 LogModel log = new LogModel()
@@ -4634,7 +4648,7 @@ namespace Talent.CarMeasureClient.ViewModel
                     }
                     if (mServiceModel.data.flag == 1)//卡正常
                     {
-
+                        //StartupInfo为1 ic启动 启动方式为现场自助
                         if (StartupInfo == 1 || StartupInfo == 2)//IC启动或FRID卡 
                         {
                             if (MeasureTypeInfo == eMeasureType.远程计量.ToString())
@@ -4642,7 +4656,7 @@ namespace Talent.CarMeasureClient.ViewModel
                                 //转坐席
                                 SendTaskToServer("远程计量任务", strResultSResult, false, false);
                             }
-                            else
+                            else  //现场自助的计量方式
                             {
                                 string getRfidId = GetRfidStr();
                                 ////调用第二个服务
@@ -4745,7 +4759,11 @@ namespace Talent.CarMeasureClient.ViewModel
             try
             {
                 string strResult = ComHelpClass.ResponseStr(asyc);
-                mServiceModel = new MeasureServiceModel();//初始化一下
+                //初始化一下
+                mServiceModel = new MeasureServiceModel();
+                // mServiceModel = InfoExchange.DeConvert(typeof(MeasureServiceModel), strResultSResult) as MeasureServiceModel;
+                //根据IC卡号获取车号信息与根据车号获取业务信息 的返回结果一样  都是MeasureServiceModel
+                //结果数据在数据.TXT中
                 mServiceModel = InfoExchange.DeConvert(typeof(MeasureServiceModel), strResult) as MeasureServiceModel;
                 #region 日志
                 LogModel log = new LogModel()
@@ -4766,6 +4784,7 @@ namespace Talent.CarMeasureClient.ViewModel
                 ////GetCarTask();//获取业务信息
                 if (mServiceModel != null && mServiceModel.success)
                 {
+                    //mtype= "远程计量 以下不执行
                     if (mServiceModel.mtype != "远程计量" && mServiceModel.mtype != "强制远程计量")
                     {
                         if (mServiceModel.mfunc == 0 && mServiceModel.total == 0)//输入业务号
@@ -4778,6 +4797,7 @@ namespace Talent.CarMeasureClient.ViewModel
                                 inputPlanCodeView.ShowDialog();
                             }));
                         }
+                        //mfunc == 0 &&total == 1
                         else if (mServiceModel.mfunc == 0 && mServiceModel.total == 1)//自动业务,数据正常
                         {
                             saveMatchid = mServiceModel.rows[0].matchid;
@@ -4837,9 +4857,10 @@ namespace Talent.CarMeasureClient.ViewModel
                             SendTaskToServer("手动计量任务", measureServiceResult, true, false);
                         }
                     }
-                    else
+                    else //执行
                     {
                         SetShowInfoMsg(XTTSStr, YCStr, false);
+                        //发送给任务服务器，远程计量
                         SendTaskToServer(mServiceModel.mtype, measureServiceResult, true, false);
                     }
                 }
@@ -6963,6 +6984,7 @@ namespace Talent.CarMeasureClient.ViewModel
         }
         /// <summary>
         /// 判断是不是允许发任务
+        /// 车上称之后最大重量：" + maxWeight + "与当前重量" + Weight + "差值是否小于 磅差
         /// </summary>
         /// <returns></returns>
         private bool CheckIsAllowSendTask()

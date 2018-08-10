@@ -1,0 +1,4 @@
+1.坐席接收新任务
+坐席接收到任务服务器的新任务--->向任务服务器发送getTask，请求获取称点" + clientId + "的任务--->任务服务器将该称点任务回传给坐席，并在任务列表删除该任务
+--->坐席接收到任务信息，赋值给SelectedTask，isStartSysTimer置为true--->sysTimer一直在运行，isStartSysTimer为true时，且第一秒时，将新任务界面显示，
+10秒钟不处理，保存任务处理结果（M_RC_TASK_DORESULT_T），隐藏界面，并回退任务
