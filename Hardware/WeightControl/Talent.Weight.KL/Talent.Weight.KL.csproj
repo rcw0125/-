@@ -63,5 +63,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WeightController.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="DOC\modbus提供客户.doc" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
