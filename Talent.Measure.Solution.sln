@@ -109,6 +109,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Talent.Weight.TLD", "Hardwa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Talent.Weight.WuYue", "Hardware\WeightControl\Talent.Weight.WuYue\Talent.Weight.WuYue.csproj", "{EE8075E3-90BB-45DB-92D8-2C79725E7CF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Talent.Weight.KL", "Hardware\WeightControl\Talent.Weight.KL\Talent.Weight.KL.csproj", "{0731F2E9-69A6-420C-BF50-8603EFFAFC02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -933,6 +935,30 @@ Global
 		{EE8075E3-90BB-45DB-92D8-2C79725E7CF0}.ReleaseILMerge|Mixed Platforms.Build.0 = Release|Any CPU
 		{EE8075E3-90BB-45DB-92D8-2C79725E7CF0}.ReleaseILMerge|x86.ActiveCfg = Release|Any CPU
 		{EE8075E3-90BB-45DB-92D8-2C79725E7CF0}.ReleaseILMerge|x86.Build.0 = Release|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.Debug|x86.Build.0 = Debug|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.DebugILMerge|Any CPU.ActiveCfg = Debug|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.DebugILMerge|Any CPU.Build.0 = Debug|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.DebugILMerge|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.DebugILMerge|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.DebugILMerge|x86.ActiveCfg = Debug|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.DebugILMerge|x86.Build.0 = Debug|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.Release|x86.ActiveCfg = Release|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.Release|x86.Build.0 = Release|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.ReleaseILMerge|Any CPU.ActiveCfg = Release|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.ReleaseILMerge|Any CPU.Build.0 = Release|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.ReleaseILMerge|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.ReleaseILMerge|Mixed Platforms.Build.0 = Release|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.ReleaseILMerge|x86.ActiveCfg = Release|Any CPU
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02}.ReleaseILMerge|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -989,6 +1015,7 @@ Global
 		{53830B5D-64F1-433D-AAB1-B1947A4AA570} = {E71B84AC-EAA3-49D6-BE57-F9997CA45154}
 		{16EE7A55-BE07-4C0B-873B-5CB6420CDC51} = {C14FED53-B9A5-4031-A03C-A1AFD48C4F3C}
 		{EE8075E3-90BB-45DB-92D8-2C79725E7CF0} = {C14FED53-B9A5-4031-A03C-A1AFD48C4F3C}
+		{0731F2E9-69A6-420C-BF50-8603EFFAFC02} = {C14FED53-B9A5-4031-A03C-A1AFD48C4F3C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EEB7B75F-CA88-4621-97F2-DCE605324FC8}

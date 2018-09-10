@@ -41,6 +41,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Talent.Measure.DomainModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\FeigeDownload\Talent.Measure.Solution\Hardware\WeightControl\Talent.Weight.WuYue\bin\Debug\Talent.Measure.DomainModel.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CMD.cs" />
@@ -55,10 +59,6 @@
     <ProjectReference Include="..\..\..\Common\Talent.ClientLog\Talent.ClientLog.csproj">
       <Project>{eb305be1-a19d-4c26-82fc-8062b66029df}</Project>
       <Name>Talent.ClientLog</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Talent.Measure.DomainModel\Talent.Measure.DomainModel.csproj">
-      <Project>{5beab21c-f47f-4db2-abef-0db075cbdb8e}</Project>
-      <Name>Talent.Measure.DomainModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Talnet.CommonMethod\Talent.CommonMethod.csproj">
       <Project>{add2b8b9-06e5-4e0e-8f2d-cc9d8f8a7c90}</Project>
