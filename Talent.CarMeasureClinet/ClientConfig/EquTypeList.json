@@ -1,0 +1,1 @@
+/*[{"Id":"01","Name":"设备类型","Code":"EquType","ParentId":null,"Child":[{"Id":"0101","Name":"灯","Code":"Led","ParentId":"01","Child":[]},{"Id":"0102","Name":"红外对射","Code":"InfraredCorrelation","ParentId":"01","Child":[]},{"Id":"0103","Name":"IO开关","Code":"IoSwitche","ParentId":"01","Child":[]}]}]*/
