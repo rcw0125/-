@@ -1,0 +1,44 @@
+<update id="returnSampleFlag" parameterClass="qualityInterface">
+		update
+		l_curr_temp_t t set
+		t.sampletime = to_char(sysdate,'yyyy-MM-dd hh24:mi:ss'),
+		t.sampleunitcode = '$sampleunitcode$',
+		t.sampleunitname = '$sampleunitname$',
+		t.deduction = '$deduction$' * 1000,
+		t.deduction2 = '$deduction2$' * 1000 where matchid = '$matchid$'
+	</update>
+
+
+<insert id="insertQualityInfo" parameterClass="qualityInterface">
+		insert into
+		Q_QUALITY_T
+		(id,
+		validflag,
+		carno,
+		matchid,
+		qmpostioncode,
+		qmpostion,
+		createoperacode,
+		createoperaname,
+		createdate,
+		cardid)
+		values
+		(Q_QUALITY_S.Nextval,
+		1,
+		'$cph$',
+		'$matchid$',
+		'$sampleunitcode$',
+		'$sampleunitname$',
+		'$samplercode$',
+		'$samplername$',
+		sysdate,
+		'$icno$')
+	</insert>
+
+
+update
+		m_measure_t t set
+		t.deduction = '$deduction$' * 1000,
+		t.deduction2 = '$deduction2$' * 1000,
+		t.memo15='取样信息回传，扣水：$deduction$，扣杂：$deduction2$'
+		where matchid = '$matchid$'

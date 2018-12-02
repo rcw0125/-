@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Bill Script="采购净重打印模版">
+  <row align="center" height="2" length="20" line="1" type="str" value="磅单打印 ReDo" width="2">
+    <param align="right" format="" length="0" type="str">Title</param>
+    <param align="right" format="(ReDo)" length="0" type="str">ReDo</param>
+  </row>
+  <row align="left" height="0" length="0" line="0" type="str" value="        No:111" width="0">
+    <param align="right" format="" length="0" type="str">operaname</param>
+    <param align="right" format="" length="0" type="str">matchid</param>
+  </row>
+  <row align="left" height="0" length="0" line="0" type="str" value="-----------------------------------------" width="0"/>
+  <row align="left" height="0" length="0" line="1" type="str" value="  车号：dsd" width="0">
+    <param align="right" format="" length="0" type="str">carno</param>
+  </row>
+  <row align="left" height="0" length="0" line="1" type="str" value="  业务：dd " width="0">
+    <param align="right" format="" length="0" type="str">planid</param>
+    <param align="right" format="" length="0" type="str">taskcode</param>
+  </row>
+  <row align="left" height="0" length="0" line="1" type="str" value="  货名：dssa发送 多岁的" width="0">
+    <param align="left" format="@@" length="0" type="list">materialName</param>
+    <param align="left" format="  (ship)" length="0" type="str">ship</param>
+  </row>
+  <row align="left" height="0" length="0" line="1" type="str" value="  供货：的所得税" width="0">
+    <param align="left" format="" length="0" type="str">sourcename</param>
+  </row>
+  <row align="left" height="0" length="0" line="1" type="str" value="  收货：的所得税" width="0">
+    <param align="left" format="" length="0" type="str">targetname</param>
+  </row>
+  <row align="left" height="0" length="0" line="1" type="str" value="  卸货方式：" width="0">
+    <param align="left" format="" length="0" type="str">memo12</param>
+  </row>
+  <row align="left" height="0" length="0" line="1" type="str" value="  供方净重：0.0" width="0">
+    <param align="left" format="" length="0" type="str">suttleb</param>
+  </row>
+  <row align="left" height="0" length="0" line="1" type="str" value="  毛重：111.0 吨/21/2015-12-17 00:00:00" width="0">
+    <param align="left" format="" length="0" type="str">grossweigh</param>
+    <param align="left" format="yymmddhhnn" length="0" type="time">grosstime</param>
+    <param align="right" format="" length="7" type="str">gross</param>
+  </row>
+  <row align="left" height="0" length="0" line="1" type="str" value="  皮重：11.0 吨/11/2015-12-17 00:00:00" width="0">
+    <param align="left" format="" length="0" type="str">tareweigh</param>
+    <param align="left" format="yymmddhhnn" length="0" type="time">taretime</param>
+    <param align="right" format="" length="7" type="str">tare</param>
+  </row>
+  <row align="left" height="0" length="0" line="1" type="str" value="  净重：100.0 吨/22/2015-12-17 00:00:00" width="0">
+    <param align="left" format="" length="0" type="str">suttleweigh</param>
+    <param align="left" format="yymmddhhnn" length="0" type="time">suttletime</param>
+    <param align="right" format="" length="7" type="str">suttle</param>
+  </row>
+  <row align="left" height="0" length="0" line="0" type="str" value="-----------------------------------------" width="0"/>
+  <row align="left" height="0" length="0" line="0" type="str" value="2015-12-18 14:18:50" width="0">
+    <param align="left" format="yy-mm-dd hh:nn:ss" length="0" type="time">printtime</param>
+    <param align="right" format="" length="0" type="str">printweigh</param>
+  </row>
+  <row align="center" height="0" length="20" line="2" type="str" value="1  共 1 联" width="0">
+    <param align="left" format="" length="0" type="str">printset</param>
+    <param align="left" format="" length="0" type="str">printcount</param>
+  </row>
+  <row align="center" height="0" length="20" line="2" type="str" value="" width="0"></row>
+</Bill>
