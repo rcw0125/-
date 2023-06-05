@@ -164,8 +164,10 @@ namespace Talent.Ic.Controller
             }
         }
 
+        Dictionary<string, Assembly> loadedAssmbly = new Dictionary<string, Assembly>();
         /// <summary>
         /// 创建实例
+        /// 如果遇到多个卡，其中有的是相同的品牌，一个程序集不能加载两次
         /// </summary>
         /// <returns></returns>
         private IIcController CreateInstance(ICCard pICCardConfig)
@@ -173,18 +175,31 @@ namespace Talent.Ic.Controller
             IIcController io = null;
             try
             {
-                string driverPath = System.AppDomain.CurrentDomain.BaseDirectory;
+                string driverPath = System.AppDomain.CurrentDomain.BaseDirectory;             
                 driverPath = Path.Combine(driverPath, pICCardConfig.Driver);
-                Assembly assembly = Assembly.LoadFile(driverPath);
+                //修改开始 20181120
+                Assembly assembly = null ;
+                if (loadedAssmbly.ContainsKey(driverPath))
+                {
+                    assembly = loadedAssmbly[driverPath];
+                }
+                else
+                {
+                    assembly = Assembly.LoadFile(driverPath);
+                }
+
+                //修改介绍  下面一句被注释掉
+               // Assembly assembly = Assembly.LoadFile(driverPath);
 
                 string name = assembly.FullName.Split(',')[0] + ".IcController";
                 Type type = assembly.GetType(name);
-                IcCardReaderLogger.Debug(string.Format("载入硬件封装模块！DLL={0}", driverPath));
-                // IIcController io = new IcController(pICCardConfig, _canReadData);
-
-
+                IcCardReaderLogger.Debug(string.Format("载入硬件封装模块！DLL={0}", driverPath));              
                 io = Activator.CreateInstance(type, pICCardConfig, _canReadData) as IIcController;
                 IcCardReaderLogger.Debug("创建IC读卡器实例成功！");
+                //添加到数据字典
+                loadedAssmbly.Add(driverPath, assembly);
+
+
             }
             catch (Exception ex)
             {
