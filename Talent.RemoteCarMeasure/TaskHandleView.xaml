@@ -561,12 +561,14 @@
                     <Border Grid.Row="1" Background="{Binding BColor0,Mode=TwoWay}"  BorderBrush="#FFECECEC" BorderThickness="0,1,0,0" Margin="0,140,0,0" Grid.RowSpan="2">
                         <Grid x:Name="rendergv">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="33*"/>
+                                <RowDefinition Height="32*"/>
+                                <RowDefinition Height="64*"/>
+                                <RowDefinition Height="64*"/>
+                                <RowDefinition Height="64*"/>
+                                <RowDefinition Height="64*"/>
+                                <RowDefinition Height="64*"/>
+                                <RowDefinition Height="63*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60"/>
@@ -574,19 +576,19 @@
                                 <ColumnDefinition Width="60"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Row="0" Text="业务" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold"  Foreground="#FF7C7C7C"/>
-                            <TextBlock Grid.Row="0" Grid.Column="2" Text="件数" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
-                            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding HandleTask.BullInfo.operatype, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
-                            <TextBox Grid.Row="0" Grid.Column="3" x:Name="snumberTextBox" Text="{Binding HandleTask.BullInfo.snumber, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
-                            <TextBlock Grid.Row="1" Text="车号" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
-                            <TextBlock Grid.Row="1" Grid.Column="2" Text="业务号" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
+                            <TextBlock Grid.Row="0" Text="业务" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold"  Foreground="#FF7C7C7C" Margin="0,21" Grid.RowSpan="2"/>
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="件数" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C" Margin="0,21" Grid.RowSpan="2"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding HandleTask.BullInfo.operatype, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,0" Height="44" VerticalAlignment="Top" Grid.RowSpan="2"/>
+                            <TextBox Grid.Row="0" Grid.Column="3" x:Name="snumberTextBox" Text="{Binding HandleTask.BullInfo.snumber, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10" Grid.RowSpan="2"/>
+                            <TextBlock Grid.Row="2" Text="车号" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C" Margin="0,21"/>
+                            <TextBlock Grid.Row="2" Grid.Column="2" Text="业务号" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C" Margin="0,21"/>
                             <!--<ComboBox Grid.Row="1" Width="160" Height="32" HorizontalAlignment="Left" Margin="60,0,0,0" Style="{DynamicResource ComboBoxStyle1}" ItemsSource="{Binding CarNumbers,Mode=TwoWay}" SelectedItem="{Binding SelectedCarNumber,Mode=TwoWay}" DisplayMemberPath="Name" />-->
-                                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding HandleTask.BullInfo.carno, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
-                                <TextBox Grid.Row="1" Grid.Column="3" Name="TaskCodeTxt"  Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"   KeyUp="TaskCodeTxt_KeyUp"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding HandleTask.BullInfo.carno, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
+                                <TextBox Grid.Row="2" Grid.Column="3" Name="TaskCodeTxt"  Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"   KeyUp="TaskCodeTxt_KeyUp"/>
                                 <Popup x:Name="DropDataViewPop" MouseLeave="Pop_Child_MouseLeave" PopupAnimation="Scroll"
                                       PlacementTarget="{Binding ElementName=TaskCodeTxt}" 
                                Placement="Bottom"
-               Width="700" Height="300" IsOpen="False" Grid.Column="1" Margin="198,0,200,0" Grid.ColumnSpan="2">
+               Width="700" Height="300" IsOpen="False" Grid.Column="2" Margin="10,0,-463,20" Grid.ColumnSpan="2" Grid.RowSpan="6">
                                     <DataGrid x:Name="PopDataGrid" VirtualizingStackPanel.IsVirtualizing="True" 
                           VirtualizingStackPanel.VirtualizationMode="Recycling"
                           EnableRowVirtualization="True" 
@@ -610,16 +612,18 @@
                                     </DataGrid>
                                 </Popup>
                                 <!--Text="{Binding HandleTask.BullInfo.planid, Mode=TwoWay}"-->
-                                <TextBlock Grid.Row="2" Text="货名" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
-                                <TextBlock Grid.Row="2" Grid.Column="2" Text="规格" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
-                                <TextBox Grid.Row="2" Grid.Column="1" x:Name="materialnameTextBox" Text="{Binding HandleTask.BullInfo.materialname, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
-                                <TextBox Grid.Row="2" Grid.Column="3" x:Name="materialspecTextBox" Text="{Binding HandleTask.BullInfo.materialspec, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
-                                <TextBlock Grid.Row="3" x:Name="ghTextBlock" Text="供货" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
-                                <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" x:Name="sourcenameTextBox" Text="{Binding HandleTask.BullInfo.sourcename, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
-                                <TextBlock Grid.Row="4" Text="收货" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
-                                <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" x:Name="targetTextBox" Text="{Binding HandleTask.BullInfo.targetname, Mode=TwoWay}" Foreground="#FF333333" FontSize="16" Margin="5,10,10,10" />
-                                <TextBlock Grid.Row="5"  Text="备注" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C"/>
-                                <TextBox x:Name="memoTextBox" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding HandleTask.BullInfo.memo, Mode=TwoWay}" Grid.Row="5" FontSize="16" Margin="5,10,10,10" Foreground="#FF7C7C7C"/>
+                                <TextBlock Grid.Row="3" Text="货名" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C" Margin="0,21"/>
+                                <TextBlock Grid.Row="3" Grid.Column="2" Text="规格" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C" Margin="0,21"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" x:Name="materialnameTextBox" Text="{Binding HandleTask.BullInfo.materialname, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
+                                <TextBox Grid.Row="3" Grid.Column="3" x:Name="materialspecTextBox" Text="{Binding HandleTask.BullInfo.materialspec, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
+                                <TextBlock Grid.Row="4" x:Name="ghTextBlock" Text="供货" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C" Margin="0,21"/>
+                                <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" x:Name="sourcenameTextBox" Text="{Binding HandleTask.BullInfo.sourcename, Mode=TwoWay}" Foreground="#FF7C7C7C" FontSize="16" Margin="5,10,10,10"/>
+                                <TextBlock Grid.Row="5" Text="收货" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C" Margin="0,21"/>
+                                <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" x:Name="targetTextBox" Text="{Binding HandleTask.BullInfo.targetname, Mode=TwoWay}" Foreground="#FF333333" FontSize="16" Margin="5,10,10,10" />
+                                <TextBlock Grid.Row="6"  Text="备注" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C" Margin="0,21,0,20"/>
+                                <TextBox x:Name="memoTextBox" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding HandleTask.BullInfo.memo, Mode=TwoWay}" Grid.Row="6" FontSize="16" Margin="5,10,10,10" Foreground="#FF7C7C7C"/>
+                                <TextBlock Grid.Row="7"  Text="线材" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" Foreground="#FF7C7C7C" Margin="-4,21,0,20"/>
+                                <TextBox x:Name="sysmemoTextBox" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding HandleTask.BullInfo.sysmemo, Mode=TwoWay}" Grid.Row="7" FontSize="16" Margin="5,10,10,10" Foreground="#FF7C7C7C"/>
                             </Grid>
                     </Border>
                     <Grid Grid.Row="3">

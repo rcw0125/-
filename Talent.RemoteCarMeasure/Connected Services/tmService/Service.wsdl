@@ -1,0 +1,4043 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetWeightForWl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Carid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWeightForWlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetWeightForWlResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FHQR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fydh" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="qrsl" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FHQRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FHQRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCARCPH">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CK" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cph" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="flag" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCARCPHResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCARCPHResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCARCPHFinish">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CK" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cph" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="flag" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCARCPHFinishResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCARCPHFinishResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateUserPass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OldPass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewPass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserPassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateUserPassResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="saveCapPicture">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fydh" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="wz" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="cphpicname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cphissuccess" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bodypicname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bodyissuccess" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="saveCapPictureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="saveCapPictureResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LocationExistCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LocationExistCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LocationExistCheckResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CKLocationExistCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="store" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CKLocationExistCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CKLocationExistCheckResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Receive_Execute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piece" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Batch" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cartype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="driver" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Receive_ExecuteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Receive_ExecuteResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Receive_ExecuteZXY">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piece" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Batch" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cartype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="driver" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Receive_ExecuteZXYResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Receive_ExecuteZXYResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_GetHWInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FYDH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CK" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="WLH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free3" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="flag" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_GetHWInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Sell_GetHWInfoResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_GetPlanInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TransportMode" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="CK" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_GetPlanInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sell_GetPlanInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_GetTrianBillNum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CK" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_GetTrianBillNumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Sell_GetTrianBillNumResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_Handler">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fydh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ck" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cxh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fs" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="did" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cartype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="driver" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_HandlerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Sell_HandlerResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_GetBillNum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CK" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_GetBillNumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sell_GetBillNumResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_DeleteSPIB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fydh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ck" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piece" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="flag" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="did" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cartype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="driver" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_DeleteSPIBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Sell_DeleteSPIBResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_UpdateSellBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FYD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CK" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wlh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sx" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TransportMode" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_UpdateSellBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Sell_UpdateSellBillResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_GetBillNumFinish">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CK" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_GetBillNumFinishResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sell_GetBillNumFinishResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_GetPlanInfoFinish">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TransportMode" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="CK" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_GetPlanInfoFinishResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sell_GetPlanInfoFinishResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_GetPalnItemInfoFinish">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fydhlist" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vphgg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vsx" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sell_GetPalnItemInfoFinishResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sell_GetPalnItemInfoFinishResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtherSell_GetBillNum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ck" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtherSell_GetBillNumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OtherSell_GetBillNumResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtherSell_GetHWInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ck" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wlh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sx" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtherSell_GetHWInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OtherSell_GetHWInfoResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtherSell_GetSelledBarcodeList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ckdh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ck" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtherSell_GetSelledBarcodeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OtherSell_GetSelledBarcodeListResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtherSell_GetOtherPlanInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ckdh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ck" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtherSell_GetOtherPlanInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OtherSell_GetOtherPlanInfoResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtherSell_Handler">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ckdh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ck" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cxh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cartype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="driver" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtherSell_HandlerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OtherSell_HandlerResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtherSell_BarcodeCancel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ckdh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cartype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="driver" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtherSell_BarcodeCancelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OtherSell_BarcodeCancelResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtherSell_Complate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ckdh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ck" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtherSell_ComplateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OtherSell_ComplateResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Move_GetBillNum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SourceDpstid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AimDpstid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pitch" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Move_GetBillNumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Move_GetBillNumResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Move_GetBillInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillNum" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pitch" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Move_GetBillInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Move_GetBillInfoResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsHave_Moved">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="billNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsHave_MovedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsHave_MovedResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Move_Excute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HW" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CarID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cartype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="driver" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Move_ExcuteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Move_ExcuteResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Move_ExcuteEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZKDH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CK" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sx" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CarID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Num" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cartype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="driver" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Move_ExcuteExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Move_ExcuteExResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Move_UpdateTotalEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZKDH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sx" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CarID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Num" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Move_UpdateTotalExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Move_UpdateTotalExResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Move_UpdateZKDItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillNum" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pitch" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Oper" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ck" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Move_UpdateZKDItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Move_UpdateZKDItemResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Move_GetPieceInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zkdh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piece" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Move_GetPieceInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Move_GetPieceInfoResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveEnd_GetBillNum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AimDpstid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cph" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pitch" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveEnd_GetBillNumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MoveEnd_GetBillNumResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveEnd_GetBufferInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CarID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Pitch" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="billnum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveEnd_GetBufferInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MoveEnd_GetBufferInfoResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveEnd_Execute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zkdh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cph" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pitch" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="cartype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="driver" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveEnd_ExecuteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MoveEnd_ExecuteResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveEnd_UpdateBatch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="car" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sx" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ck" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cartype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="driver" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveEnd_UpdateBatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MoveEnd_UpdateBatchResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveEnd_UpdateZKDItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Oper" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ck" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveEnd_UpdateZKDItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MoveEnd_UpdateZKDItemResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Shape_GetBillNum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Dpstid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Shape_GetBillNumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Shape_GetBillNumResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Shape_GetBillItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Shape_GetBillItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Shape_GetBillItemResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Shape_GetItemInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillNum" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ItemID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Shape_GetItemInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Shape_GetItemInfoResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Shape_GetStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Piece" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PCH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="WLH" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Shape_GetStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Shape_GetStockResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Shape_ExecuteEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Shape_ExecuteExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Shape_ExecuteExResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Shape_Execute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillNum" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ItemID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piece" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="WLH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PCH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FREE1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FREE2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FREE3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Shape_ExecuteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Shape_ExecuteResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Shape_UpdatePieceStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ItemID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Shape_UpdatePieceStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Shape_UpdatePieceStatusResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertHuichuanInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billnum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ck" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="para" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertHuichuanInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertHuichuanInfoResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBarcodeList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DJH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CK" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flag" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBarcodeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetBarcodeListResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Single_BinShift">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ywdh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ICK" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ISHW" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="THW" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZXRY" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cartype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="driver" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Single_BinShiftResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Single_BinShiftResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsBarcodeInBin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HW" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsBarcodeInBinResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsBarcodeInBinResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CanBarcodeInBin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HW" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CanBarcodeInBinResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CanBarcodeInBinResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBinShiftNO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ICK" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBinShiftNOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetBinShiftNOResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBarcodesInBin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HW" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBarcodesInBinResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetBarcodesInBinResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsBarcodeCanReturn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CK" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsBarcodeCanReturnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsBarcodeCanReturnResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CanBarcodeRetToBin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HW" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CanBarcodeRetToBinResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CanBarcodeRetToBinResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTHNO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTHNOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetTHNOResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TH_SaveData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="THDH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="binTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CK" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TH_SaveDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TH_SaveDataResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTHBarcodeInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTHBarcodeInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetTHBarcodeInfoResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="outDs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CanclePdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pdd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CanclePddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CanclePddResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SumbmitPdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pdd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wlh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wlmc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="gg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ph" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sx" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free3" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="qty" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="jldw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zldw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SumbmitPddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SumbmitPddResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CloseChuPDD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pdd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CloseChuPDDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CloseChuPDDResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetpddItemcount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apddh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ahw" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetpddItemcountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetpddItemcountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SumbmitChouPdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pdd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wlh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wlmc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="gg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ph" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sx" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="free3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="jldw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zldw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SumbmitChouPddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SumbmitChouPddResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BarcodeIsExist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Abarcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BarcodeIsExistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BarcodeIsExistResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Getpddhlist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ckType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ck" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetpddhlistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetpddhlistResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHWCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="djlx" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pddh" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHWCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHWCheckResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PddisExist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pdType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Apdd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PddisExistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PddisExistResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHWInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hwh" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHWInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHWInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetZyPDDH">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hwh" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetZyPDDHResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetZyPDDHResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetZyPDDHItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pddh" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetZyPDDHItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetZyPDDHItemResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateZyPddh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hwh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ck" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="itype" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateZyPddhResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateZyPddhResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveZyPdcupan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pddh" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sl" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="barcodeStr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveZyPdcupanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveZyPdcupanResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndZyPdcupan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pddh" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndZyPdcupanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EndZyPdcupanResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isScreen">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pddh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="barcodestr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isScreenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isScreenResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveZyPdchoupan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pddh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="barcodeStr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveZyPdchoupanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveZyPdchoupanResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HWISExit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hwh" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HWISExitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HWISExitResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBarcodeInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBarcodeInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBarcodeInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckBarcodeIsInHw">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="barcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hw" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckBarcodeIsInHwResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckBarcodeIsInHwResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cartype" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCarIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetWeightForWlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWeightForWl" />
+  </wsdl:message>
+  <wsdl:message name="GetWeightForWlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWeightForWlResponse" />
+  </wsdl:message>
+  <wsdl:message name="FHQRSoapIn">
+    <wsdl:part name="parameters" element="tns:FHQR" />
+  </wsdl:message>
+  <wsdl:message name="FHQRSoapOut">
+    <wsdl:part name="parameters" element="tns:FHQRResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCARCPHSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCARCPH" />
+  </wsdl:message>
+  <wsdl:message name="GetCARCPHSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCARCPHResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCARCPHFinishSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCARCPHFinish" />
+  </wsdl:message>
+  <wsdl:message name="GetCARCPHFinishSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCARCPHFinishResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserPassSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUserPass" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserPassSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserPassResponse" />
+  </wsdl:message>
+  <wsdl:message name="saveCapPictureSoapIn">
+    <wsdl:part name="parameters" element="tns:saveCapPicture" />
+  </wsdl:message>
+  <wsdl:message name="saveCapPictureSoapOut">
+    <wsdl:part name="parameters" element="tns:saveCapPictureResponse" />
+  </wsdl:message>
+  <wsdl:message name="LocationExistCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:LocationExistCheck" />
+  </wsdl:message>
+  <wsdl:message name="LocationExistCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:LocationExistCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="CKLocationExistCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:CKLocationExistCheck" />
+  </wsdl:message>
+  <wsdl:message name="CKLocationExistCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:CKLocationExistCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="Receive_ExecuteSoapIn">
+    <wsdl:part name="parameters" element="tns:Receive_Execute" />
+  </wsdl:message>
+  <wsdl:message name="Receive_ExecuteSoapOut">
+    <wsdl:part name="parameters" element="tns:Receive_ExecuteResponse" />
+  </wsdl:message>
+  <wsdl:message name="Receive_ExecuteZXYSoapIn">
+    <wsdl:part name="parameters" element="tns:Receive_ExecuteZXY" />
+  </wsdl:message>
+  <wsdl:message name="Receive_ExecuteZXYSoapOut">
+    <wsdl:part name="parameters" element="tns:Receive_ExecuteZXYResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sell_GetHWInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:Sell_GetHWInfo" />
+  </wsdl:message>
+  <wsdl:message name="Sell_GetHWInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:Sell_GetHWInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sell_GetPlanInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:Sell_GetPlanInfo" />
+  </wsdl:message>
+  <wsdl:message name="Sell_GetPlanInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:Sell_GetPlanInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sell_GetTrianBillNumSoapIn">
+    <wsdl:part name="parameters" element="tns:Sell_GetTrianBillNum" />
+  </wsdl:message>
+  <wsdl:message name="Sell_GetTrianBillNumSoapOut">
+    <wsdl:part name="parameters" element="tns:Sell_GetTrianBillNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sell_HandlerSoapIn">
+    <wsdl:part name="parameters" element="tns:Sell_Handler" />
+  </wsdl:message>
+  <wsdl:message name="Sell_HandlerSoapOut">
+    <wsdl:part name="parameters" element="tns:Sell_HandlerResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sell_GetBillNumSoapIn">
+    <wsdl:part name="parameters" element="tns:Sell_GetBillNum" />
+  </wsdl:message>
+  <wsdl:message name="Sell_GetBillNumSoapOut">
+    <wsdl:part name="parameters" element="tns:Sell_GetBillNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sell_DeleteSPIBSoapIn">
+    <wsdl:part name="parameters" element="tns:Sell_DeleteSPIB" />
+  </wsdl:message>
+  <wsdl:message name="Sell_DeleteSPIBSoapOut">
+    <wsdl:part name="parameters" element="tns:Sell_DeleteSPIBResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sell_UpdateSellBillSoapIn">
+    <wsdl:part name="parameters" element="tns:Sell_UpdateSellBill" />
+  </wsdl:message>
+  <wsdl:message name="Sell_UpdateSellBillSoapOut">
+    <wsdl:part name="parameters" element="tns:Sell_UpdateSellBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sell_GetBillNumFinishSoapIn">
+    <wsdl:part name="parameters" element="tns:Sell_GetBillNumFinish" />
+  </wsdl:message>
+  <wsdl:message name="Sell_GetBillNumFinishSoapOut">
+    <wsdl:part name="parameters" element="tns:Sell_GetBillNumFinishResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sell_GetPlanInfoFinishSoapIn">
+    <wsdl:part name="parameters" element="tns:Sell_GetPlanInfoFinish" />
+  </wsdl:message>
+  <wsdl:message name="Sell_GetPlanInfoFinishSoapOut">
+    <wsdl:part name="parameters" element="tns:Sell_GetPlanInfoFinishResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sell_GetPalnItemInfoFinishSoapIn">
+    <wsdl:part name="parameters" element="tns:Sell_GetPalnItemInfoFinish" />
+  </wsdl:message>
+  <wsdl:message name="Sell_GetPalnItemInfoFinishSoapOut">
+    <wsdl:part name="parameters" element="tns:Sell_GetPalnItemInfoFinishResponse" />
+  </wsdl:message>
+  <wsdl:message name="OtherSell_GetBillNumSoapIn">
+    <wsdl:part name="parameters" element="tns:OtherSell_GetBillNum" />
+  </wsdl:message>
+  <wsdl:message name="OtherSell_GetBillNumSoapOut">
+    <wsdl:part name="parameters" element="tns:OtherSell_GetBillNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="OtherSell_GetHWInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:OtherSell_GetHWInfo" />
+  </wsdl:message>
+  <wsdl:message name="OtherSell_GetHWInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:OtherSell_GetHWInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="OtherSell_GetSelledBarcodeListSoapIn">
+    <wsdl:part name="parameters" element="tns:OtherSell_GetSelledBarcodeList" />
+  </wsdl:message>
+  <wsdl:message name="OtherSell_GetSelledBarcodeListSoapOut">
+    <wsdl:part name="parameters" element="tns:OtherSell_GetSelledBarcodeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="OtherSell_GetOtherPlanInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:OtherSell_GetOtherPlanInfo" />
+  </wsdl:message>
+  <wsdl:message name="OtherSell_GetOtherPlanInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:OtherSell_GetOtherPlanInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="OtherSell_HandlerSoapIn">
+    <wsdl:part name="parameters" element="tns:OtherSell_Handler" />
+  </wsdl:message>
+  <wsdl:message name="OtherSell_HandlerSoapOut">
+    <wsdl:part name="parameters" element="tns:OtherSell_HandlerResponse" />
+  </wsdl:message>
+  <wsdl:message name="OtherSell_BarcodeCancelSoapIn">
+    <wsdl:part name="parameters" element="tns:OtherSell_BarcodeCancel" />
+  </wsdl:message>
+  <wsdl:message name="OtherSell_BarcodeCancelSoapOut">
+    <wsdl:part name="parameters" element="tns:OtherSell_BarcodeCancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="OtherSell_ComplateSoapIn">
+    <wsdl:part name="parameters" element="tns:OtherSell_Complate" />
+  </wsdl:message>
+  <wsdl:message name="OtherSell_ComplateSoapOut">
+    <wsdl:part name="parameters" element="tns:OtherSell_ComplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Move_GetBillNumSoapIn">
+    <wsdl:part name="parameters" element="tns:Move_GetBillNum" />
+  </wsdl:message>
+  <wsdl:message name="Move_GetBillNumSoapOut">
+    <wsdl:part name="parameters" element="tns:Move_GetBillNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="Move_GetBillInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:Move_GetBillInfo" />
+  </wsdl:message>
+  <wsdl:message name="Move_GetBillInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:Move_GetBillInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsHave_MovedSoapIn">
+    <wsdl:part name="parameters" element="tns:IsHave_Moved" />
+  </wsdl:message>
+  <wsdl:message name="IsHave_MovedSoapOut">
+    <wsdl:part name="parameters" element="tns:IsHave_MovedResponse" />
+  </wsdl:message>
+  <wsdl:message name="Move_ExcuteSoapIn">
+    <wsdl:part name="parameters" element="tns:Move_Excute" />
+  </wsdl:message>
+  <wsdl:message name="Move_ExcuteSoapOut">
+    <wsdl:part name="parameters" element="tns:Move_ExcuteResponse" />
+  </wsdl:message>
+  <wsdl:message name="Move_ExcuteExSoapIn">
+    <wsdl:part name="parameters" element="tns:Move_ExcuteEx" />
+  </wsdl:message>
+  <wsdl:message name="Move_ExcuteExSoapOut">
+    <wsdl:part name="parameters" element="tns:Move_ExcuteExResponse" />
+  </wsdl:message>
+  <wsdl:message name="Move_UpdateTotalExSoapIn">
+    <wsdl:part name="parameters" element="tns:Move_UpdateTotalEx" />
+  </wsdl:message>
+  <wsdl:message name="Move_UpdateTotalExSoapOut">
+    <wsdl:part name="parameters" element="tns:Move_UpdateTotalExResponse" />
+  </wsdl:message>
+  <wsdl:message name="Move_UpdateZKDItemSoapIn">
+    <wsdl:part name="parameters" element="tns:Move_UpdateZKDItem" />
+  </wsdl:message>
+  <wsdl:message name="Move_UpdateZKDItemSoapOut">
+    <wsdl:part name="parameters" element="tns:Move_UpdateZKDItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="Move_GetPieceInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:Move_GetPieceInfo" />
+  </wsdl:message>
+  <wsdl:message name="Move_GetPieceInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:Move_GetPieceInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoveEnd_GetBillNumSoapIn">
+    <wsdl:part name="parameters" element="tns:MoveEnd_GetBillNum" />
+  </wsdl:message>
+  <wsdl:message name="MoveEnd_GetBillNumSoapOut">
+    <wsdl:part name="parameters" element="tns:MoveEnd_GetBillNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoveEnd_GetBufferInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:MoveEnd_GetBufferInfo" />
+  </wsdl:message>
+  <wsdl:message name="MoveEnd_GetBufferInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:MoveEnd_GetBufferInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoveEnd_ExecuteSoapIn">
+    <wsdl:part name="parameters" element="tns:MoveEnd_Execute" />
+  </wsdl:message>
+  <wsdl:message name="MoveEnd_ExecuteSoapOut">
+    <wsdl:part name="parameters" element="tns:MoveEnd_ExecuteResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoveEnd_UpdateBatchSoapIn">
+    <wsdl:part name="parameters" element="tns:MoveEnd_UpdateBatch" />
+  </wsdl:message>
+  <wsdl:message name="MoveEnd_UpdateBatchSoapOut">
+    <wsdl:part name="parameters" element="tns:MoveEnd_UpdateBatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoveEnd_UpdateZKDItemSoapIn">
+    <wsdl:part name="parameters" element="tns:MoveEnd_UpdateZKDItem" />
+  </wsdl:message>
+  <wsdl:message name="MoveEnd_UpdateZKDItemSoapOut">
+    <wsdl:part name="parameters" element="tns:MoveEnd_UpdateZKDItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="Shape_GetBillNumSoapIn">
+    <wsdl:part name="parameters" element="tns:Shape_GetBillNum" />
+  </wsdl:message>
+  <wsdl:message name="Shape_GetBillNumSoapOut">
+    <wsdl:part name="parameters" element="tns:Shape_GetBillNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="Shape_GetBillItemSoapIn">
+    <wsdl:part name="parameters" element="tns:Shape_GetBillItem" />
+  </wsdl:message>
+  <wsdl:message name="Shape_GetBillItemSoapOut">
+    <wsdl:part name="parameters" element="tns:Shape_GetBillItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="Shape_GetItemInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:Shape_GetItemInfo" />
+  </wsdl:message>
+  <wsdl:message name="Shape_GetItemInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:Shape_GetItemInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Shape_GetStockSoapIn">
+    <wsdl:part name="parameters" element="tns:Shape_GetStock" />
+  </wsdl:message>
+  <wsdl:message name="Shape_GetStockSoapOut">
+    <wsdl:part name="parameters" element="tns:Shape_GetStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="Shape_ExecuteExSoapIn">
+    <wsdl:part name="parameters" element="tns:Shape_ExecuteEx" />
+  </wsdl:message>
+  <wsdl:message name="Shape_ExecuteExSoapOut">
+    <wsdl:part name="parameters" element="tns:Shape_ExecuteExResponse" />
+  </wsdl:message>
+  <wsdl:message name="Shape_ExecuteSoapIn">
+    <wsdl:part name="parameters" element="tns:Shape_Execute" />
+  </wsdl:message>
+  <wsdl:message name="Shape_ExecuteSoapOut">
+    <wsdl:part name="parameters" element="tns:Shape_ExecuteResponse" />
+  </wsdl:message>
+  <wsdl:message name="Shape_UpdatePieceStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:Shape_UpdatePieceStatus" />
+  </wsdl:message>
+  <wsdl:message name="Shape_UpdatePieceStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:Shape_UpdatePieceStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertHuichuanInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertHuichuanInfo" />
+  </wsdl:message>
+  <wsdl:message name="InsertHuichuanInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertHuichuanInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBarcodeListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBarcodeList" />
+  </wsdl:message>
+  <wsdl:message name="GetBarcodeListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBarcodeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="Single_BinShiftSoapIn">
+    <wsdl:part name="parameters" element="tns:Single_BinShift" />
+  </wsdl:message>
+  <wsdl:message name="Single_BinShiftSoapOut">
+    <wsdl:part name="parameters" element="tns:Single_BinShiftResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsBarcodeInBinSoapIn">
+    <wsdl:part name="parameters" element="tns:IsBarcodeInBin" />
+  </wsdl:message>
+  <wsdl:message name="IsBarcodeInBinSoapOut">
+    <wsdl:part name="parameters" element="tns:IsBarcodeInBinResponse" />
+  </wsdl:message>
+  <wsdl:message name="CanBarcodeInBinSoapIn">
+    <wsdl:part name="parameters" element="tns:CanBarcodeInBin" />
+  </wsdl:message>
+  <wsdl:message name="CanBarcodeInBinSoapOut">
+    <wsdl:part name="parameters" element="tns:CanBarcodeInBinResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBinShiftNOSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBinShiftNO" />
+  </wsdl:message>
+  <wsdl:message name="GetBinShiftNOSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBinShiftNOResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBarcodesInBinSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBarcodesInBin" />
+  </wsdl:message>
+  <wsdl:message name="GetBarcodesInBinSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBarcodesInBinResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsBarcodeCanReturnSoapIn">
+    <wsdl:part name="parameters" element="tns:IsBarcodeCanReturn" />
+  </wsdl:message>
+  <wsdl:message name="IsBarcodeCanReturnSoapOut">
+    <wsdl:part name="parameters" element="tns:IsBarcodeCanReturnResponse" />
+  </wsdl:message>
+  <wsdl:message name="CanBarcodeRetToBinSoapIn">
+    <wsdl:part name="parameters" element="tns:CanBarcodeRetToBin" />
+  </wsdl:message>
+  <wsdl:message name="CanBarcodeRetToBinSoapOut">
+    <wsdl:part name="parameters" element="tns:CanBarcodeRetToBinResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTHNOSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTHNO" />
+  </wsdl:message>
+  <wsdl:message name="GetTHNOSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTHNOResponse" />
+  </wsdl:message>
+  <wsdl:message name="TH_SaveDataSoapIn">
+    <wsdl:part name="parameters" element="tns:TH_SaveData" />
+  </wsdl:message>
+  <wsdl:message name="TH_SaveDataSoapOut">
+    <wsdl:part name="parameters" element="tns:TH_SaveDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTHBarcodeInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTHBarcodeInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetTHBarcodeInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTHBarcodeInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CanclePddSoapIn">
+    <wsdl:part name="parameters" element="tns:CanclePdd" />
+  </wsdl:message>
+  <wsdl:message name="CanclePddSoapOut">
+    <wsdl:part name="parameters" element="tns:CanclePddResponse" />
+  </wsdl:message>
+  <wsdl:message name="SumbmitPddSoapIn">
+    <wsdl:part name="parameters" element="tns:SumbmitPdd" />
+  </wsdl:message>
+  <wsdl:message name="SumbmitPddSoapOut">
+    <wsdl:part name="parameters" element="tns:SumbmitPddResponse" />
+  </wsdl:message>
+  <wsdl:message name="CloseChuPDDSoapIn">
+    <wsdl:part name="parameters" element="tns:CloseChuPDD" />
+  </wsdl:message>
+  <wsdl:message name="CloseChuPDDSoapOut">
+    <wsdl:part name="parameters" element="tns:CloseChuPDDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetpddItemcountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetpddItemcount" />
+  </wsdl:message>
+  <wsdl:message name="GetpddItemcountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetpddItemcountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SumbmitChouPddSoapIn">
+    <wsdl:part name="parameters" element="tns:SumbmitChouPdd" />
+  </wsdl:message>
+  <wsdl:message name="SumbmitChouPddSoapOut">
+    <wsdl:part name="parameters" element="tns:SumbmitChouPddResponse" />
+  </wsdl:message>
+  <wsdl:message name="BarcodeIsExistSoapIn">
+    <wsdl:part name="parameters" element="tns:BarcodeIsExist" />
+  </wsdl:message>
+  <wsdl:message name="BarcodeIsExistSoapOut">
+    <wsdl:part name="parameters" element="tns:BarcodeIsExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetpddhlistSoapIn">
+    <wsdl:part name="parameters" element="tns:Getpddhlist" />
+  </wsdl:message>
+  <wsdl:message name="GetpddhlistSoapOut">
+    <wsdl:part name="parameters" element="tns:GetpddhlistResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHWCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHWCheck" />
+  </wsdl:message>
+  <wsdl:message name="GetHWCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHWCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="PddisExistSoapIn">
+    <wsdl:part name="parameters" element="tns:PddisExist" />
+  </wsdl:message>
+  <wsdl:message name="PddisExistSoapOut">
+    <wsdl:part name="parameters" element="tns:PddisExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHWInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHWInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetHWInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHWInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetZyPDDHSoapIn">
+    <wsdl:part name="parameters" element="tns:GetZyPDDH" />
+  </wsdl:message>
+  <wsdl:message name="GetZyPDDHSoapOut">
+    <wsdl:part name="parameters" element="tns:GetZyPDDHResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetZyPDDHItemSoapIn">
+    <wsdl:part name="parameters" element="tns:GetZyPDDHItem" />
+  </wsdl:message>
+  <wsdl:message name="GetZyPDDHItemSoapOut">
+    <wsdl:part name="parameters" element="tns:GetZyPDDHItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateZyPddhSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateZyPddh" />
+  </wsdl:message>
+  <wsdl:message name="CreateZyPddhSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateZyPddhResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveZyPdcupanSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveZyPdcupan" />
+  </wsdl:message>
+  <wsdl:message name="SaveZyPdcupanSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveZyPdcupanResponse" />
+  </wsdl:message>
+  <wsdl:message name="EndZyPdcupanSoapIn">
+    <wsdl:part name="parameters" element="tns:EndZyPdcupan" />
+  </wsdl:message>
+  <wsdl:message name="EndZyPdcupanSoapOut">
+    <wsdl:part name="parameters" element="tns:EndZyPdcupanResponse" />
+  </wsdl:message>
+  <wsdl:message name="isScreenSoapIn">
+    <wsdl:part name="parameters" element="tns:isScreen" />
+  </wsdl:message>
+  <wsdl:message name="isScreenSoapOut">
+    <wsdl:part name="parameters" element="tns:isScreenResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveZyPdchoupanSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveZyPdchoupan" />
+  </wsdl:message>
+  <wsdl:message name="SaveZyPdchoupanSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveZyPdchoupanResponse" />
+  </wsdl:message>
+  <wsdl:message name="HWISExitSoapIn">
+    <wsdl:part name="parameters" element="tns:HWISExit" />
+  </wsdl:message>
+  <wsdl:message name="HWISExitSoapOut">
+    <wsdl:part name="parameters" element="tns:HWISExitResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBarcodeInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBarcodeInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetBarcodeInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBarcodeInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckBarcodeIsInHwSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckBarcodeIsInHw" />
+  </wsdl:message>
+  <wsdl:message name="CheckBarcodeIsInHwSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckBarcodeIsInHwResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCarIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCarID" />
+  </wsdl:message>
+  <wsdl:message name="GetCarIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCarIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="GetWeightForWl">
+      <wsdl:input message="tns:GetWeightForWlSoapIn" />
+      <wsdl:output message="tns:GetWeightForWlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FHQR">
+      <wsdl:input message="tns:FHQRSoapIn" />
+      <wsdl:output message="tns:FHQRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCARCPH">
+      <wsdl:input message="tns:GetCARCPHSoapIn" />
+      <wsdl:output message="tns:GetCARCPHSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCARCPHFinish">
+      <wsdl:input message="tns:GetCARCPHFinishSoapIn" />
+      <wsdl:output message="tns:GetCARCPHFinishSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserPass">
+      <wsdl:input message="tns:UpdateUserPassSoapIn" />
+      <wsdl:output message="tns:UpdateUserPassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="saveCapPicture">
+      <wsdl:input message="tns:saveCapPictureSoapIn" />
+      <wsdl:output message="tns:saveCapPictureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LocationExistCheck">
+      <wsdl:input message="tns:LocationExistCheckSoapIn" />
+      <wsdl:output message="tns:LocationExistCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CKLocationExistCheck">
+      <wsdl:input message="tns:CKLocationExistCheckSoapIn" />
+      <wsdl:output message="tns:CKLocationExistCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Receive_Execute">
+      <wsdl:input message="tns:Receive_ExecuteSoapIn" />
+      <wsdl:output message="tns:Receive_ExecuteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Receive_ExecuteZXY">
+      <wsdl:input message="tns:Receive_ExecuteZXYSoapIn" />
+      <wsdl:output message="tns:Receive_ExecuteZXYSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetHWInfo">
+      <wsdl:input message="tns:Sell_GetHWInfoSoapIn" />
+      <wsdl:output message="tns:Sell_GetHWInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetPlanInfo">
+      <wsdl:input message="tns:Sell_GetPlanInfoSoapIn" />
+      <wsdl:output message="tns:Sell_GetPlanInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetTrianBillNum">
+      <wsdl:input message="tns:Sell_GetTrianBillNumSoapIn" />
+      <wsdl:output message="tns:Sell_GetTrianBillNumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sell_Handler">
+      <wsdl:input message="tns:Sell_HandlerSoapIn" />
+      <wsdl:output message="tns:Sell_HandlerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetBillNum">
+      <wsdl:input message="tns:Sell_GetBillNumSoapIn" />
+      <wsdl:output message="tns:Sell_GetBillNumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sell_DeleteSPIB">
+      <wsdl:input message="tns:Sell_DeleteSPIBSoapIn" />
+      <wsdl:output message="tns:Sell_DeleteSPIBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sell_UpdateSellBill">
+      <wsdl:input message="tns:Sell_UpdateSellBillSoapIn" />
+      <wsdl:output message="tns:Sell_UpdateSellBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetBillNumFinish">
+      <wsdl:input message="tns:Sell_GetBillNumFinishSoapIn" />
+      <wsdl:output message="tns:Sell_GetBillNumFinishSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetPlanInfoFinish">
+      <wsdl:input message="tns:Sell_GetPlanInfoFinishSoapIn" />
+      <wsdl:output message="tns:Sell_GetPlanInfoFinishSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetPalnItemInfoFinish">
+      <wsdl:input message="tns:Sell_GetPalnItemInfoFinishSoapIn" />
+      <wsdl:output message="tns:Sell_GetPalnItemInfoFinishSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_GetBillNum">
+      <wsdl:input message="tns:OtherSell_GetBillNumSoapIn" />
+      <wsdl:output message="tns:OtherSell_GetBillNumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_GetHWInfo">
+      <wsdl:input message="tns:OtherSell_GetHWInfoSoapIn" />
+      <wsdl:output message="tns:OtherSell_GetHWInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_GetSelledBarcodeList">
+      <wsdl:input message="tns:OtherSell_GetSelledBarcodeListSoapIn" />
+      <wsdl:output message="tns:OtherSell_GetSelledBarcodeListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_GetOtherPlanInfo">
+      <wsdl:input message="tns:OtherSell_GetOtherPlanInfoSoapIn" />
+      <wsdl:output message="tns:OtherSell_GetOtherPlanInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_Handler">
+      <wsdl:input message="tns:OtherSell_HandlerSoapIn" />
+      <wsdl:output message="tns:OtherSell_HandlerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_BarcodeCancel">
+      <wsdl:input message="tns:OtherSell_BarcodeCancelSoapIn" />
+      <wsdl:output message="tns:OtherSell_BarcodeCancelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_Complate">
+      <wsdl:input message="tns:OtherSell_ComplateSoapIn" />
+      <wsdl:output message="tns:OtherSell_ComplateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Move_GetBillNum">
+      <wsdl:input message="tns:Move_GetBillNumSoapIn" />
+      <wsdl:output message="tns:Move_GetBillNumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Move_GetBillInfo">
+      <wsdl:input message="tns:Move_GetBillInfoSoapIn" />
+      <wsdl:output message="tns:Move_GetBillInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsHave_Moved">
+      <wsdl:input message="tns:IsHave_MovedSoapIn" />
+      <wsdl:output message="tns:IsHave_MovedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Move_Excute">
+      <wsdl:input message="tns:Move_ExcuteSoapIn" />
+      <wsdl:output message="tns:Move_ExcuteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Move_ExcuteEx">
+      <wsdl:input message="tns:Move_ExcuteExSoapIn" />
+      <wsdl:output message="tns:Move_ExcuteExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Move_UpdateTotalEx">
+      <wsdl:input message="tns:Move_UpdateTotalExSoapIn" />
+      <wsdl:output message="tns:Move_UpdateTotalExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Move_UpdateZKDItem">
+      <wsdl:input message="tns:Move_UpdateZKDItemSoapIn" />
+      <wsdl:output message="tns:Move_UpdateZKDItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Move_GetPieceInfo">
+      <wsdl:input message="tns:Move_GetPieceInfoSoapIn" />
+      <wsdl:output message="tns:Move_GetPieceInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_GetBillNum">
+      <wsdl:input message="tns:MoveEnd_GetBillNumSoapIn" />
+      <wsdl:output message="tns:MoveEnd_GetBillNumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_GetBufferInfo">
+      <wsdl:input message="tns:MoveEnd_GetBufferInfoSoapIn" />
+      <wsdl:output message="tns:MoveEnd_GetBufferInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_Execute">
+      <wsdl:input message="tns:MoveEnd_ExecuteSoapIn" />
+      <wsdl:output message="tns:MoveEnd_ExecuteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_UpdateBatch">
+      <wsdl:input message="tns:MoveEnd_UpdateBatchSoapIn" />
+      <wsdl:output message="tns:MoveEnd_UpdateBatchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_UpdateZKDItem">
+      <wsdl:input message="tns:MoveEnd_UpdateZKDItemSoapIn" />
+      <wsdl:output message="tns:MoveEnd_UpdateZKDItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Shape_GetBillNum">
+      <wsdl:input message="tns:Shape_GetBillNumSoapIn" />
+      <wsdl:output message="tns:Shape_GetBillNumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Shape_GetBillItem">
+      <wsdl:input message="tns:Shape_GetBillItemSoapIn" />
+      <wsdl:output message="tns:Shape_GetBillItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Shape_GetItemInfo">
+      <wsdl:input message="tns:Shape_GetItemInfoSoapIn" />
+      <wsdl:output message="tns:Shape_GetItemInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Shape_GetStock">
+      <wsdl:input message="tns:Shape_GetStockSoapIn" />
+      <wsdl:output message="tns:Shape_GetStockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Shape_ExecuteEx">
+      <wsdl:input message="tns:Shape_ExecuteExSoapIn" />
+      <wsdl:output message="tns:Shape_ExecuteExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Shape_Execute">
+      <wsdl:input message="tns:Shape_ExecuteSoapIn" />
+      <wsdl:output message="tns:Shape_ExecuteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Shape_UpdatePieceStatus">
+      <wsdl:input message="tns:Shape_UpdatePieceStatusSoapIn" />
+      <wsdl:output message="tns:Shape_UpdatePieceStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertHuichuanInfo">
+      <wsdl:input message="tns:InsertHuichuanInfoSoapIn" />
+      <wsdl:output message="tns:InsertHuichuanInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBarcodeList">
+      <wsdl:input message="tns:GetBarcodeListSoapIn" />
+      <wsdl:output message="tns:GetBarcodeListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Single_BinShift">
+      <wsdl:input message="tns:Single_BinShiftSoapIn" />
+      <wsdl:output message="tns:Single_BinShiftSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsBarcodeInBin">
+      <wsdl:input message="tns:IsBarcodeInBinSoapIn" />
+      <wsdl:output message="tns:IsBarcodeInBinSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CanBarcodeInBin">
+      <wsdl:input message="tns:CanBarcodeInBinSoapIn" />
+      <wsdl:output message="tns:CanBarcodeInBinSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBinShiftNO">
+      <wsdl:input message="tns:GetBinShiftNOSoapIn" />
+      <wsdl:output message="tns:GetBinShiftNOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBarcodesInBin">
+      <wsdl:input message="tns:GetBarcodesInBinSoapIn" />
+      <wsdl:output message="tns:GetBarcodesInBinSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsBarcodeCanReturn">
+      <wsdl:input message="tns:IsBarcodeCanReturnSoapIn" />
+      <wsdl:output message="tns:IsBarcodeCanReturnSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CanBarcodeRetToBin">
+      <wsdl:input message="tns:CanBarcodeRetToBinSoapIn" />
+      <wsdl:output message="tns:CanBarcodeRetToBinSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTHNO">
+      <wsdl:input message="tns:GetTHNOSoapIn" />
+      <wsdl:output message="tns:GetTHNOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TH_SaveData">
+      <wsdl:input message="tns:TH_SaveDataSoapIn" />
+      <wsdl:output message="tns:TH_SaveDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTHBarcodeInfo">
+      <wsdl:input message="tns:GetTHBarcodeInfoSoapIn" />
+      <wsdl:output message="tns:GetTHBarcodeInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CanclePdd">
+      <wsdl:input message="tns:CanclePddSoapIn" />
+      <wsdl:output message="tns:CanclePddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SumbmitPdd">
+      <wsdl:input message="tns:SumbmitPddSoapIn" />
+      <wsdl:output message="tns:SumbmitPddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseChuPDD">
+      <wsdl:input message="tns:CloseChuPDDSoapIn" />
+      <wsdl:output message="tns:CloseChuPDDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetpddItemcount">
+      <wsdl:input message="tns:GetpddItemcountSoapIn" />
+      <wsdl:output message="tns:GetpddItemcountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SumbmitChouPdd">
+      <wsdl:input message="tns:SumbmitChouPddSoapIn" />
+      <wsdl:output message="tns:SumbmitChouPddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BarcodeIsExist">
+      <wsdl:input message="tns:BarcodeIsExistSoapIn" />
+      <wsdl:output message="tns:BarcodeIsExistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Getpddhlist">
+      <wsdl:input message="tns:GetpddhlistSoapIn" />
+      <wsdl:output message="tns:GetpddhlistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHWCheck">
+      <wsdl:input message="tns:GetHWCheckSoapIn" />
+      <wsdl:output message="tns:GetHWCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PddisExist">
+      <wsdl:input message="tns:PddisExistSoapIn" />
+      <wsdl:output message="tns:PddisExistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHWInfo">
+      <wsdl:input message="tns:GetHWInfoSoapIn" />
+      <wsdl:output message="tns:GetHWInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetZyPDDH">
+      <wsdl:input message="tns:GetZyPDDHSoapIn" />
+      <wsdl:output message="tns:GetZyPDDHSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetZyPDDHItem">
+      <wsdl:input message="tns:GetZyPDDHItemSoapIn" />
+      <wsdl:output message="tns:GetZyPDDHItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateZyPddh">
+      <wsdl:input message="tns:CreateZyPddhSoapIn" />
+      <wsdl:output message="tns:CreateZyPddhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveZyPdcupan">
+      <wsdl:input message="tns:SaveZyPdcupanSoapIn" />
+      <wsdl:output message="tns:SaveZyPdcupanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EndZyPdcupan">
+      <wsdl:input message="tns:EndZyPdcupanSoapIn" />
+      <wsdl:output message="tns:EndZyPdcupanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isScreen">
+      <wsdl:input message="tns:isScreenSoapIn" />
+      <wsdl:output message="tns:isScreenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveZyPdchoupan">
+      <wsdl:input message="tns:SaveZyPdchoupanSoapIn" />
+      <wsdl:output message="tns:SaveZyPdchoupanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HWISExit">
+      <wsdl:input message="tns:HWISExitSoapIn" />
+      <wsdl:output message="tns:HWISExitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBarcodeInfo">
+      <wsdl:input message="tns:GetBarcodeInfoSoapIn" />
+      <wsdl:output message="tns:GetBarcodeInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckBarcodeIsInHw">
+      <wsdl:input message="tns:CheckBarcodeIsInHwSoapIn" />
+      <wsdl:output message="tns:CheckBarcodeIsInHwSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCarID">
+      <wsdl:input message="tns:GetCarIDSoapIn" />
+      <wsdl:output message="tns:GetCarIDSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetWeightForWl">
+      <soap:operation soapAction="http://tempuri.org/GetWeightForWl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FHQR">
+      <soap:operation soapAction="http://tempuri.org/FHQR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCARCPH">
+      <soap:operation soapAction="http://tempuri.org/GetCARCPH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCARCPHFinish">
+      <soap:operation soapAction="http://tempuri.org/GetCARCPHFinish" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserPass">
+      <soap:operation soapAction="http://tempuri.org/UpdateUserPass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveCapPicture">
+      <soap:operation soapAction="http://tempuri.org/saveCapPicture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LocationExistCheck">
+      <soap:operation soapAction="http://tempuri.org/LocationExistCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CKLocationExistCheck">
+      <soap:operation soapAction="http://tempuri.org/CKLocationExistCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Receive_Execute">
+      <soap:operation soapAction="http://tempuri.org/Receive_Execute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Receive_ExecuteZXY">
+      <soap:operation soapAction="http://tempuri.org/Receive_ExecuteZXY" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetHWInfo">
+      <soap:operation soapAction="http://tempuri.org/Sell_GetHWInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetPlanInfo">
+      <soap:operation soapAction="http://tempuri.org/Sell_GetPlanInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetTrianBillNum">
+      <soap:operation soapAction="http://tempuri.org/Sell_GetTrianBillNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_Handler">
+      <soap:operation soapAction="http://tempuri.org/Sell_Handler" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetBillNum">
+      <soap:operation soapAction="http://tempuri.org/Sell_GetBillNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_DeleteSPIB">
+      <soap:operation soapAction="http://tempuri.org/Sell_DeleteSPIB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_UpdateSellBill">
+      <soap:operation soapAction="http://tempuri.org/Sell_UpdateSellBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetBillNumFinish">
+      <soap:operation soapAction="http://tempuri.org/Sell_GetBillNumFinish" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetPlanInfoFinish">
+      <soap:operation soapAction="http://tempuri.org/Sell_GetPlanInfoFinish" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetPalnItemInfoFinish">
+      <soap:operation soapAction="http://tempuri.org/Sell_GetPalnItemInfoFinish" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_GetBillNum">
+      <soap:operation soapAction="http://tempuri.org/OtherSell_GetBillNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_GetHWInfo">
+      <soap:operation soapAction="http://tempuri.org/OtherSell_GetHWInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_GetSelledBarcodeList">
+      <soap:operation soapAction="http://tempuri.org/OtherSell_GetSelledBarcodeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_GetOtherPlanInfo">
+      <soap:operation soapAction="http://tempuri.org/OtherSell_GetOtherPlanInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_Handler">
+      <soap:operation soapAction="http://tempuri.org/OtherSell_Handler" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_BarcodeCancel">
+      <soap:operation soapAction="http://tempuri.org/OtherSell_BarcodeCancel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_Complate">
+      <soap:operation soapAction="http://tempuri.org/OtherSell_Complate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Move_GetBillNum">
+      <soap:operation soapAction="http://tempuri.org/Move_GetBillNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Move_GetBillInfo">
+      <soap:operation soapAction="http://tempuri.org/Move_GetBillInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsHave_Moved">
+      <soap:operation soapAction="http://tempuri.org/IsHave_Moved" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Move_Excute">
+      <soap:operation soapAction="http://tempuri.org/Move_Excute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Move_ExcuteEx">
+      <soap:operation soapAction="http://tempuri.org/Move_ExcuteEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Move_UpdateTotalEx">
+      <soap:operation soapAction="http://tempuri.org/Move_UpdateTotalEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Move_UpdateZKDItem">
+      <soap:operation soapAction="http://tempuri.org/Move_UpdateZKDItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Move_GetPieceInfo">
+      <soap:operation soapAction="http://tempuri.org/Move_GetPieceInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_GetBillNum">
+      <soap:operation soapAction="http://tempuri.org/MoveEnd_GetBillNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_GetBufferInfo">
+      <soap:operation soapAction="http://tempuri.org/MoveEnd_GetBufferInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_Execute">
+      <soap:operation soapAction="http://tempuri.org/MoveEnd_Execute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_UpdateBatch">
+      <soap:operation soapAction="http://tempuri.org/MoveEnd_UpdateBatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_UpdateZKDItem">
+      <soap:operation soapAction="http://tempuri.org/MoveEnd_UpdateZKDItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Shape_GetBillNum">
+      <soap:operation soapAction="http://tempuri.org/Shape_GetBillNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Shape_GetBillItem">
+      <soap:operation soapAction="http://tempuri.org/Shape_GetBillItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Shape_GetItemInfo">
+      <soap:operation soapAction="http://tempuri.org/Shape_GetItemInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Shape_GetStock">
+      <soap:operation soapAction="http://tempuri.org/Shape_GetStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Shape_ExecuteEx">
+      <soap:operation soapAction="http://tempuri.org/Shape_ExecuteEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Shape_Execute">
+      <soap:operation soapAction="http://tempuri.org/Shape_Execute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Shape_UpdatePieceStatus">
+      <soap:operation soapAction="http://tempuri.org/Shape_UpdatePieceStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertHuichuanInfo">
+      <soap:operation soapAction="http://tempuri.org/InsertHuichuanInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBarcodeList">
+      <soap:operation soapAction="http://tempuri.org/GetBarcodeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Single_BinShift">
+      <soap:operation soapAction="http://tempuri.org/Single_BinShift" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsBarcodeInBin">
+      <soap:operation soapAction="http://tempuri.org/IsBarcodeInBin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanBarcodeInBin">
+      <soap:operation soapAction="http://tempuri.org/CanBarcodeInBin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBinShiftNO">
+      <soap:operation soapAction="http://tempuri.org/GetBinShiftNO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBarcodesInBin">
+      <soap:operation soapAction="http://tempuri.org/GetBarcodesInBin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsBarcodeCanReturn">
+      <soap:operation soapAction="http://tempuri.org/IsBarcodeCanReturn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanBarcodeRetToBin">
+      <soap:operation soapAction="http://tempuri.org/CanBarcodeRetToBin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTHNO">
+      <soap:operation soapAction="http://tempuri.org/GetTHNO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TH_SaveData">
+      <soap:operation soapAction="http://tempuri.org/TH_SaveData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTHBarcodeInfo">
+      <soap:operation soapAction="http://tempuri.org/GetTHBarcodeInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanclePdd">
+      <soap:operation soapAction="http://tempuri.org/CanclePdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SumbmitPdd">
+      <soap:operation soapAction="http://tempuri.org/SumbmitPdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseChuPDD">
+      <soap:operation soapAction="http://tempuri.org/CloseChuPDD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetpddItemcount">
+      <soap:operation soapAction="http://tempuri.org/GetpddItemcount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SumbmitChouPdd">
+      <soap:operation soapAction="http://tempuri.org/SumbmitChouPdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BarcodeIsExist">
+      <soap:operation soapAction="http://tempuri.org/BarcodeIsExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Getpddhlist">
+      <soap:operation soapAction="http://tempuri.org/Getpddhlist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHWCheck">
+      <soap:operation soapAction="http://tempuri.org/GetHWCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PddisExist">
+      <soap:operation soapAction="http://tempuri.org/PddisExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHWInfo">
+      <soap:operation soapAction="http://tempuri.org/GetHWInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZyPDDH">
+      <soap:operation soapAction="http://tempuri.org/GetZyPDDH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZyPDDHItem">
+      <soap:operation soapAction="http://tempuri.org/GetZyPDDHItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateZyPddh">
+      <soap:operation soapAction="http://tempuri.org/CreateZyPddh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveZyPdcupan">
+      <soap:operation soapAction="http://tempuri.org/SaveZyPdcupan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndZyPdcupan">
+      <soap:operation soapAction="http://tempuri.org/EndZyPdcupan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isScreen">
+      <soap:operation soapAction="http://tempuri.org/isScreen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveZyPdchoupan">
+      <soap:operation soapAction="http://tempuri.org/SaveZyPdchoupan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HWISExit">
+      <soap:operation soapAction="http://tempuri.org/HWISExit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBarcodeInfo">
+      <soap:operation soapAction="http://tempuri.org/GetBarcodeInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckBarcodeIsInHw">
+      <soap:operation soapAction="http://tempuri.org/CheckBarcodeIsInHw" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarID">
+      <soap:operation soapAction="http://tempuri.org/GetCarID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetWeightForWl">
+      <soap12:operation soapAction="http://tempuri.org/GetWeightForWl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FHQR">
+      <soap12:operation soapAction="http://tempuri.org/FHQR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCARCPH">
+      <soap12:operation soapAction="http://tempuri.org/GetCARCPH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCARCPHFinish">
+      <soap12:operation soapAction="http://tempuri.org/GetCARCPHFinish" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserPass">
+      <soap12:operation soapAction="http://tempuri.org/UpdateUserPass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveCapPicture">
+      <soap12:operation soapAction="http://tempuri.org/saveCapPicture" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LocationExistCheck">
+      <soap12:operation soapAction="http://tempuri.org/LocationExistCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CKLocationExistCheck">
+      <soap12:operation soapAction="http://tempuri.org/CKLocationExistCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Receive_Execute">
+      <soap12:operation soapAction="http://tempuri.org/Receive_Execute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Receive_ExecuteZXY">
+      <soap12:operation soapAction="http://tempuri.org/Receive_ExecuteZXY" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetHWInfo">
+      <soap12:operation soapAction="http://tempuri.org/Sell_GetHWInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetPlanInfo">
+      <soap12:operation soapAction="http://tempuri.org/Sell_GetPlanInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetTrianBillNum">
+      <soap12:operation soapAction="http://tempuri.org/Sell_GetTrianBillNum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_Handler">
+      <soap12:operation soapAction="http://tempuri.org/Sell_Handler" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetBillNum">
+      <soap12:operation soapAction="http://tempuri.org/Sell_GetBillNum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_DeleteSPIB">
+      <soap12:operation soapAction="http://tempuri.org/Sell_DeleteSPIB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_UpdateSellBill">
+      <soap12:operation soapAction="http://tempuri.org/Sell_UpdateSellBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetBillNumFinish">
+      <soap12:operation soapAction="http://tempuri.org/Sell_GetBillNumFinish" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetPlanInfoFinish">
+      <soap12:operation soapAction="http://tempuri.org/Sell_GetPlanInfoFinish" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell_GetPalnItemInfoFinish">
+      <soap12:operation soapAction="http://tempuri.org/Sell_GetPalnItemInfoFinish" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_GetBillNum">
+      <soap12:operation soapAction="http://tempuri.org/OtherSell_GetBillNum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_GetHWInfo">
+      <soap12:operation soapAction="http://tempuri.org/OtherSell_GetHWInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_GetSelledBarcodeList">
+      <soap12:operation soapAction="http://tempuri.org/OtherSell_GetSelledBarcodeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_GetOtherPlanInfo">
+      <soap12:operation soapAction="http://tempuri.org/OtherSell_GetOtherPlanInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_Handler">
+      <soap12:operation soapAction="http://tempuri.org/OtherSell_Handler" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_BarcodeCancel">
+      <soap12:operation soapAction="http://tempuri.org/OtherSell_BarcodeCancel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtherSell_Complate">
+      <soap12:operation soapAction="http://tempuri.org/OtherSell_Complate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Move_GetBillNum">
+      <soap12:operation soapAction="http://tempuri.org/Move_GetBillNum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Move_GetBillInfo">
+      <soap12:operation soapAction="http://tempuri.org/Move_GetBillInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsHave_Moved">
+      <soap12:operation soapAction="http://tempuri.org/IsHave_Moved" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Move_Excute">
+      <soap12:operation soapAction="http://tempuri.org/Move_Excute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Move_ExcuteEx">
+      <soap12:operation soapAction="http://tempuri.org/Move_ExcuteEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Move_UpdateTotalEx">
+      <soap12:operation soapAction="http://tempuri.org/Move_UpdateTotalEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Move_UpdateZKDItem">
+      <soap12:operation soapAction="http://tempuri.org/Move_UpdateZKDItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Move_GetPieceInfo">
+      <soap12:operation soapAction="http://tempuri.org/Move_GetPieceInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_GetBillNum">
+      <soap12:operation soapAction="http://tempuri.org/MoveEnd_GetBillNum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_GetBufferInfo">
+      <soap12:operation soapAction="http://tempuri.org/MoveEnd_GetBufferInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_Execute">
+      <soap12:operation soapAction="http://tempuri.org/MoveEnd_Execute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_UpdateBatch">
+      <soap12:operation soapAction="http://tempuri.org/MoveEnd_UpdateBatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveEnd_UpdateZKDItem">
+      <soap12:operation soapAction="http://tempuri.org/MoveEnd_UpdateZKDItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Shape_GetBillNum">
+      <soap12:operation soapAction="http://tempuri.org/Shape_GetBillNum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Shape_GetBillItem">
+      <soap12:operation soapAction="http://tempuri.org/Shape_GetBillItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Shape_GetItemInfo">
+      <soap12:operation soapAction="http://tempuri.org/Shape_GetItemInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Shape_GetStock">
+      <soap12:operation soapAction="http://tempuri.org/Shape_GetStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Shape_ExecuteEx">
+      <soap12:operation soapAction="http://tempuri.org/Shape_ExecuteEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Shape_Execute">
+      <soap12:operation soapAction="http://tempuri.org/Shape_Execute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Shape_UpdatePieceStatus">
+      <soap12:operation soapAction="http://tempuri.org/Shape_UpdatePieceStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertHuichuanInfo">
+      <soap12:operation soapAction="http://tempuri.org/InsertHuichuanInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBarcodeList">
+      <soap12:operation soapAction="http://tempuri.org/GetBarcodeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Single_BinShift">
+      <soap12:operation soapAction="http://tempuri.org/Single_BinShift" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsBarcodeInBin">
+      <soap12:operation soapAction="http://tempuri.org/IsBarcodeInBin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanBarcodeInBin">
+      <soap12:operation soapAction="http://tempuri.org/CanBarcodeInBin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBinShiftNO">
+      <soap12:operation soapAction="http://tempuri.org/GetBinShiftNO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBarcodesInBin">
+      <soap12:operation soapAction="http://tempuri.org/GetBarcodesInBin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsBarcodeCanReturn">
+      <soap12:operation soapAction="http://tempuri.org/IsBarcodeCanReturn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanBarcodeRetToBin">
+      <soap12:operation soapAction="http://tempuri.org/CanBarcodeRetToBin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTHNO">
+      <soap12:operation soapAction="http://tempuri.org/GetTHNO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TH_SaveData">
+      <soap12:operation soapAction="http://tempuri.org/TH_SaveData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTHBarcodeInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetTHBarcodeInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanclePdd">
+      <soap12:operation soapAction="http://tempuri.org/CanclePdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SumbmitPdd">
+      <soap12:operation soapAction="http://tempuri.org/SumbmitPdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseChuPDD">
+      <soap12:operation soapAction="http://tempuri.org/CloseChuPDD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetpddItemcount">
+      <soap12:operation soapAction="http://tempuri.org/GetpddItemcount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SumbmitChouPdd">
+      <soap12:operation soapAction="http://tempuri.org/SumbmitChouPdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BarcodeIsExist">
+      <soap12:operation soapAction="http://tempuri.org/BarcodeIsExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Getpddhlist">
+      <soap12:operation soapAction="http://tempuri.org/Getpddhlist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHWCheck">
+      <soap12:operation soapAction="http://tempuri.org/GetHWCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PddisExist">
+      <soap12:operation soapAction="http://tempuri.org/PddisExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHWInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetHWInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZyPDDH">
+      <soap12:operation soapAction="http://tempuri.org/GetZyPDDH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZyPDDHItem">
+      <soap12:operation soapAction="http://tempuri.org/GetZyPDDHItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateZyPddh">
+      <soap12:operation soapAction="http://tempuri.org/CreateZyPddh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveZyPdcupan">
+      <soap12:operation soapAction="http://tempuri.org/SaveZyPdcupan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndZyPdcupan">
+      <soap12:operation soapAction="http://tempuri.org/EndZyPdcupan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isScreen">
+      <soap12:operation soapAction="http://tempuri.org/isScreen" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveZyPdchoupan">
+      <soap12:operation soapAction="http://tempuri.org/SaveZyPdchoupan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HWISExit">
+      <soap12:operation soapAction="http://tempuri.org/HWISExit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBarcodeInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetBarcodeInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckBarcodeIsInHw">
+      <soap12:operation soapAction="http://tempuri.org/CheckBarcodeIsInHw" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarID">
+      <soap12:operation soapAction="http://tempuri.org/GetCarID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://192.168.2.8:8088/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://192.168.2.8:8088/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

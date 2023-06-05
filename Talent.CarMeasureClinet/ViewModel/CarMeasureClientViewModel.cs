@@ -2972,7 +2972,9 @@ namespace Talent.CarMeasureClient.ViewModel
             //{
             //    IsFullScreenEnable = true;//cs中有可用为真情况下，设置窗体全屏的代码...
             //}
-            IsFullScreenEnable = true;
+            //IsFullScreenEnable = true;
+            //2018-09-12  更改 原为true  一直全屏
+            IsFullScreenEnable = false;
             /*System.Windows.Application.Current.Dispatcher.Invoke(new Action(() =>
             {
                 if(!window.isActiveWindow())

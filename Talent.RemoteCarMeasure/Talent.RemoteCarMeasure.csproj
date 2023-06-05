@@ -99,6 +99,8 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
@@ -181,6 +183,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commom\VoiceRemindHelper.cs" />
+    <Compile Include="Connected Services\tmService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\ClientInfo.cs" />
     <Compile Include="Model\WeightAttentionModel.cs" />
@@ -417,7 +424,126 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\tmService\Service.wsdl" />
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.GetBarcodeListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.GetBarcodesInBinResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.GetBinShiftNOResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.GetCARCPHFinishResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.GetCARCPHResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.GetTHBarcodeInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.GetTHNOResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.InsertHuichuanInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.MoveEnd_ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.MoveEnd_GetBillNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.MoveEnd_GetBufferInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.MoveEnd_UpdateBatchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.MoveEnd_UpdateZKDItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Move_ExcuteExResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Move_ExcuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Move_GetBillInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Move_GetBillNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Move_GetPieceInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Move_UpdateTotalExResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Move_UpdateZKDItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.OtherSell_BarcodeCancelResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.OtherSell_ComplateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.OtherSell_GetBillNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.OtherSell_GetHWInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.OtherSell_GetOtherPlanInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.OtherSell_GetSelledBarcodeListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.OtherSell_HandlerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Sell_DeleteSPIBResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Sell_GetHWInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Sell_GetTrianBillNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Sell_HandlerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Sell_UpdateSellBillResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Shape_ExecuteExResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Shape_ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Shape_GetBillItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Shape_GetBillNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Shape_GetItemInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Shape_GetStockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\tmService\Talent.RemoteCarMeasure.tmService.Shape_UpdatePieceStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -507,7 +633,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CarMeasureClient\" />
-    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -582,10 +707,23 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\tmService\Service.disco" />
+    <None Include="Connected Services\tmService\configuration91.svcinfo" />
+    <None Include="Connected Services\tmService\configuration.svcinfo" />
+    <None Include="Connected Services\tmService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="RING.WAV">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="记录.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\tmService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

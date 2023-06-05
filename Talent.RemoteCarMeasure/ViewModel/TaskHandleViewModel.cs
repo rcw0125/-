@@ -1633,6 +1633,50 @@ namespace Talent.RemoteCarMeasure.ViewModel
                         #endregion
                     }
                 }
+                ///*****如果是计毛且业务类型是84则查询重量****////
+                if (this.HandleTask.BullInfo.measurestate == "G" && this.handleTask.BullInfo.operatype == "84")
+                {
+                    double tmWeight = 0;
+                    try
+                    {
+                        tmService.ServiceSoapClient tm = new tmService.ServiceSoapClient();
+                        tmWeight = tm.GetWeightForWl(this.handleTask.BullInfo.carno);
+                        this.handleTask.BullInfo.suttleb = Convert.ToDecimal(tmWeight);
+                        //this.handleTask.BullInfo.planweight = Convert.ToDecimal(tmWeight * 1000);
+                        //this.handleTask.BullInfo.sysmemo = "测试备注";
+                        ShowSuttleb = (Convert.ToDecimal(handleTask.BullInfo.suttleb)).ToString("F2");
+                        #region 日志
+                        LogModel log = new LogModel()
+                        {
+                            CreateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                            Direction = LogConstParam.Directions_In,
+                            FunctionName = "坐席任务处理窗体_从条码服务获取重量信息",
+                            Level = LogConstParam.LogLevel_Info,
+                            Msg = this.handleTask.BullInfo.carno + "从条码服务获取重量:" +  this.handleTask.BullInfo.suttleb,
+                            Origin = LoginUser.Role.Name,
+                            OperateUserName = LoginUser.Name,
+                        };
+                        Talent.ClinetLog.SysLog.Log(JsonConvert.SerializeObject(log));
+                        #endregion
+                    }
+                    catch (Exception ex)
+                    {
+                        #region 日志
+                        LogModel log = new LogModel()
+                        {
+                            CreateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                            Direction = LogConstParam.Directions_In,
+                            FunctionName = "坐席任务处理窗体_从条码服务获取重量信息",
+                            Level = LogConstParam.LogLevel_Error,
+                            Msg = "从条码服务获取重量信息时异常:"+ this.handleTask.BullInfo.carno + ex.Message,
+                            Origin = LoginUser.Role.Name,
+                            OperateUserName = LoginUser.Name,
+                        };
+                        Talent.ClinetLog.SysLog.Log(JsonConvert.SerializeObject(log));
+                        #endregion
+                    }
+
+                }
                 SendBusinessInfosToTaskServer();
                 ShowHistoryTareMethod();//获取上一次的皮重信息…… 2016-3-15 09:02:12……
             }
@@ -2728,7 +2772,22 @@ namespace Talent.RemoteCarMeasure.ViewModel
                 #endregion
             }
             SetBullInfo();
-            string bInfoStr = JsonConvert.SerializeObject(this.HandleTask.BullInfo);
+
+            if (this.HandleTask.BullInfo.measurestate == "G" && this.handleTask.BullInfo.operatype == "84") 
+            {
+                this.HandleTask.BullInfo.usermemo = this.ShowSuttleb;// 将线材重量保存到usermemo
+                if (this.handleTask.BullInfo.suttleb < Convert.ToDecimal(this.ShowSuttle))
+                {
+                    this.handleTask.BullInfo.sysmemo = "增加" + Math.Abs(Convert.ToDouble(Convert.ToDecimal(this.ShowSuttle) - this.handleTask.BullInfo.suttleb)) + "吨";
+                }
+                else
+                {
+                    this.handleTask.BullInfo.sysmemo = "减少" + Math.Abs(Convert.ToDouble(Convert.ToDecimal(this.ShowSuttle) - this.handleTask.BullInfo.suttleb)) + "吨";
+                }
+                
+            }
+
+                string bInfoStr = JsonConvert.SerializeObject(this.HandleTask.BullInfo);
             bool isSave = CheckIsAllowSave(bInfoStr, true);//首先调用验证判断是不是允许保存……lt 2016-2-24 09:11:44……
             if (isSave)
             {

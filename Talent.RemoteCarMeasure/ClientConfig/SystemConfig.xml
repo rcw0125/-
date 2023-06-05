@@ -4,7 +4,7 @@
     <submodule name="系统设置" type="普通" code="SystemConfig">
       <param name="UnitName" lab="单位名称" type="String" size="20" value="山东天利和软件股份有限公司" />
       <param name="SysName" lab="系统名称" type="String" size="30" value="邢台钢铁远程集中计量管理系统" />
-      <param name="SeatUrl" lab="任务服务器IP" type="String" size="30" value="http://192.168.2.42"/>
+      <param name="SeatUrl" lab="任务服务器IP" type="String" size="30" value="http://192.168.48.249"/>
       <param name="SeatPort" lab="任务服务器端口" type="Int" size="30" value="9001"/>
       <param name="SeatId" lab="坐席ID" type="String" size="30" value="911">
       </param>

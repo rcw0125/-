@@ -228,6 +228,8 @@ namespace Talent.RemoteCarMeasure.ViewModel
 
         public void LoginMethod()
         {
+           // tmService.ServiceSoapClient tm = new tmService.ServiceSoapClient();
+           //var tmWeight = tm.GetWeightForWl("冀E2055Z");
             CheckUser();
             if (string.IsNullOrEmpty(this.ErrMsg))
             {
@@ -254,7 +256,9 @@ namespace Talent.RemoteCarMeasure.ViewModel
                 StoryBoardEnable = true;
                 isLogin = true;
                 string serviceUrl = ConfigurationManager.AppSettings["getLoginInfo"].ToString().Replace('$', '&');
-                string getUrl = string.Format(serviceUrl, UserName,Password);
+               // string getUrl = string.Format(serviceUrl, UserName, Password);
+                string getUrl = string.Format(serviceUrl, UserName.ToUpper(), PassWordHelpClass.LesPassWordMD5(UserName.ToUpper() + Password));
+               
                 #region 日志
                 LogModel log = new LogModel()
                 {
